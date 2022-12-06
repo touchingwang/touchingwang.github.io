@@ -10,25 +10,24 @@ avatarTitle: Touchingwang
 # 头像里面的描述
 avatarDesc: 轻狂书生
 # 域名
-url: "https://touchingwang.github.io"
+url: 'https://touchingwang.github.io'
 
 # 多说评论系统
 # Comment
 comment:
-    provider: duoshuo
-    duoshuo:
-    short_name: touchingwang
+  provider: duoshuo
+  duoshuo:
+  short_name: touchingwang
 
 # Social
 social:
-    # 你的微博id (不是用户昵称)
-    weibo: 
-    weixing:  
-    github: 
-    # twitter: 
-    mail: 
-    csdn: 
-
+  # 你的微博id (不是用户昵称)
+  weibo:
+  weixing:
+  github:
+  # twitter:
+  mail:
+  csdn:
 
 # 《----------------- 上面的信息修改成你自己的 ---------------------------》
 #
@@ -39,12 +38,10 @@ social:
 #
 # 《--------------- 下面的信息可以自行选择是否修改 ------------------------》
 
-
 # permalink: /:year/:month/:title/
 
 permalink: /:short_year:i_month:i_day.html
 # 伪 postid 的方案,便于网站 SEO
-
 
 # Format
 
@@ -58,28 +55,23 @@ kramdown:
 textColor: #FF0000
 
 # supported colors: blue, green, purple, red, orange or slate. If you need clear, leave it empty.
-cover_color: 
+cover_color:
 
 # The blog button should not be removed.
 blog_button:
-    title: 主页
+  title: 主页
 
 # Navigation buttons in the front page.s
 nav:
-    - {title: 文章, description: archive, url: '/archive'}   
-    - {title: 标签, description: tags, url: '/tags'}   
-    - {title: 留言, description: liuyan, url: '/liuyan'}
-    - {title: 资源, description: ziyuan, url: '/ziyuan'}
-    - {title: 关于, description: about, url: '/about'}
-
+  - { title: 文章, description: archive, url: '/archive' }
+  - { title: 标签, description: tags, url: '/tags' }
+  - { title: 留言, description: liuyan, url: '/liuyan' }
+  - { title: 资源, description: ziyuan, url: '/ziyuan' }
+  - { title: 关于, description: about, url: '/about' }
 
 # Pagination
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 paginate: 20
-paginate_path: "page/:num/"
+paginate_path: 'page/:num/'
 
 future: true
-
-
-
-
