@@ -1,13 +1,18 @@
 # Basic
-title: Robotkang
+# 博客标题
+title: Touchingwang
+# 博客子标题
 subtitle: 欢迎走进我的世界
+# 博客描述
 description: 科技、生活、音乐、人生
 # 头像里面的标题
-avatarTitle: RobotKang
+avatarTitle: Touchingwang
 # 头像里面的描述
-avatarDesc: 机器人赛事
-url: "https://robotkang.cc"
+avatarDesc: 轻狂书生
+# 域名
+url: "https://touchingwang.github.io"
 
+# 多说评论系统
 # Comment
 comment:
     provider: duoshuo
@@ -16,6 +21,7 @@ comment:
 
 # Social
 social:
+    # 你的微博id (不是用户昵称)
     weibo: 
     weixing:  
     github: 
@@ -66,8 +72,6 @@ nav:
     - {title: 资源, description: ziyuan, url: '/ziyuan'}
     - {title: 关于, description: about, url: '/about'}
 
-          
-    
 
 # Pagination
 gems: [jekyll-paginate]

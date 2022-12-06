@@ -10,7 +10,7 @@ layout: default
     <li>
       <h1 class="post-list__post-title post-title"><a href="{{ post.url }}" title="访问 {{ post.title }}">{{ post.title }}</a></h1>
       <p class="excerpt">{{ post.content | strip_html | strip_newlines | truncate: 250 }}&hellip;</p>
-      <div class="post-list__meta">        
+      <div class="post-list__meta">      
         <time datetime="{{post.date | date: date_to_xmlschema}}" class="post-list__meta--date date">
           <img src="/images/calendar.png" width="20px" style="vertical-align:text-top;" /> 
           {{ post.date | date: "%F"}}</time> 
@@ -31,32 +31,4 @@ layout: default
   </ol>
 
   {% include pagination.html %}           
-
-
 </div>
-
-
-
-<!--baidu
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-<body style="height:1000px;">-->
-
-
-
-
-
-
