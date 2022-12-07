@@ -9,7 +9,6 @@ tag: '技术'
 ### Java接口中的default方法
 
 在Java8以后,接口中可以添加使用default或者static修饰的方法，在这里我们只讨论default方法,default修饰方法只能在接口中使用,在接口中被default标记的方法为普通方法,可以直接写方法体。
--- 
 
 #### 特性1
 
