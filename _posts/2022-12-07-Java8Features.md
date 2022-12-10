@@ -89,4 +89,4 @@ interface biology2 {
 
 <br>
 
-转载请注明：[touchingwang的博客](http://touchingwang.github.io) » [点击阅读原文](http://https://github.com/touchingwang/touchingwang.github.io/tree/master/_posts/2022-12-07-Bean&Map.md)
+转载请注明：[touchingwang的博客](http://touchingwang.github.io) » [点击阅读原文](http://https://github.com/touchingwang/touchingwang.github.io/tree/master/_posts/2022-12-07-Java8Features.md)
