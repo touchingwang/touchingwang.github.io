@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Java接口中的default方法（Java8新特性）'
-date: 2022-12-07
+date: 2022-12-06
 description: 'Java8新特性'
 tags: '技术'
 --- 
