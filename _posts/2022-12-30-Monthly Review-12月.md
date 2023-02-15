@@ -23,7 +23,3 @@ tags: 总结
   可以说22年的12月,国内的人们过的都很痛苦,万恶的奥密克戎,几乎每个人都体验了这种新冠病毒。
   
   这个月迷迷糊糊就过去了,2023年要来了,我今年做的不多也不少,大学到社会上过去的感觉也比一般的更好。
-
-<br>
-
-转载请注明：[touchingwang的博客](http://touchingwang.github.io) » [点击阅读原文](http://https://github.com/touchingwang/touchingwang.github.io/tree/master/_posts/2022-12-07-Bean&Map.md)
