@@ -1,8 +1,8 @@
 ---
 layout: post
-title: '实践理解lassLoader.java与Launcher.class'
+title: '实践理解ClassLoader.java与Launcher.class'
 date: 2023-03-13
-description: '实践理解lassLoader.java与Launcher.class'
+description: '实践理解ClassLoader.java与Launcher.class'
 tags: '技术'
 --- 
 
