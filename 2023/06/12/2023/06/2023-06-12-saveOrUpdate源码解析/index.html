@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>数组对象转对象数组 | Hexo</title>
+  <title>saveOrUpdate源码解析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组对象转对象数组">
+  <meta name="description" content="saveOrUpdate源码解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组对象转对象数组">
-<meta property="og:url" content="http://example.com/2023/06/09/2023/06/%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="saveOrUpdate源码解析">
+<meta property="og:url" content="http://example.com/2023/06/12/2023/06/2023-06-12-saveOrUpdate%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="数组对象转对象数组">
+<meta property="og:description" content="saveOrUpdate源码解析">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-06-08T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-06-09T08:18:23.228Z">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/12/pCePHNn.jpg">
+<meta property="article:published_time" content="2023-06-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-12T09:09:35.241Z">
 <meta property="article:author" content="touchingwang">
 <meta property="article:tag" content="技术(23上)">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/12/pCePHNn.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 39
+			总文章数 40
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -166,36 +168,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2023/06/数组对象转对象数组" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2023/06/2023-06-12-saveOrUpdate源码解析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数组对象转对象数组
+      saveOrUpdate源码解析
     </h1>
   
 
         
-        <a href="/2023/06/09/2023/06/%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2023-06-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-09</time>
+        <a href="/2023/06/12/2023/06/2023-06-12-saveOrUpdate%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2023-06-11T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天遇到一个很奇葩的业务，要求把数据对象返回的同时也要返回它的对象数组。可以说学习使用类型转换是程序员必不可少的；</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 数组对象</span><br><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">		age: <span class="string">&quot;22&quot;</span>,</span><br><span class="line">		hobby: <span class="string">&quot;乒乓球&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		name: <span class="string">&quot;李四&quot;</span>,</span><br><span class="line">		age: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">		hobby: <span class="string">&quot;钓鱼&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br><span class="line"># 对象数组</span><br><span class="line">&#123;</span><br><span class="line">	name: [<span class="string">&quot;张三&quot;</span>,<span class="string">&quot;李四&quot;</span>],</span><br><span class="line">	age: [<span class="string">&quot;22&quot;</span>,<span class="string">&quot;24&quot;</span>],</span><br><span class="line">	hobby: [<span class="string">&quot;乒乓球&quot;</span>,<span class="string">&quot;钓鱼&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <div align="center">
+<img src="https://s1.ax1x.com/2023/06/12/pCePHNn.jpg" width="32%" margin="auto">
+</div>
 <span id="more"></span>
+平时对一个页面的低代码开发是增删改查，良好的低代码会把新增和更改放到同一个接口当中，今天我也尝试把新增和删除的接口用同一个接口来编写。
 
-<p>一开始我是在 <code>hutool</code>工具类中的 <code>Convert.convert(new Typerefrence&lt;&gt;()&#123;&#125;,data)</code>，可惜不能实现，于是就开始手动转了</p>
-<p>下面给上代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Map&lt;String, Object&gt;&gt; rsList = data;  </span><br><span class="line"><span class="comment">//创建对象  </span></span><br><span class="line">HashMap&lt;String, ArrayList&gt; rows = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();  </span><br><span class="line"><span class="keyword">if</span>(rsList.size()!=<span class="number">0</span>)&#123;  </span><br><span class="line">    Set&lt;String&gt; keySet = rsList.get(<span class="number">0</span>).keySet();  </span><br><span class="line">    <span class="keyword">for</span> (String s : keySet) &#123;  </span><br><span class="line">        rows.put(s,<span class="keyword">new</span> <span class="title class_">ArrayList</span>());  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : rsList) &#123;  </span><br><span class="line">        Set&lt;String&gt; stringSet = map.keySet();  </span><br><span class="line">        <span class="keyword">for</span> (String s : stringSet) &#123;  </span><br><span class="line">            rows.get(s).add(map.get(s));  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里参考 <code>mybatis-plus</code> 的 <code>saveOrUpdate</code> 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">mySaveOrUpdate</span><span class="params">(TIotDsModule entity)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == entity) &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        <span class="type">TableInfo</span> <span class="variable">tableInfo</span> <span class="operator">=</span> TableInfoHelper.getTableInfo(<span class="built_in">this</span>.entityClass);  </span><br><span class="line">        Assert.notNull(tableInfo, <span class="string">&quot;error: can not execute. because can not find cache of TableInfo for entity!&quot;</span>, <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">0</span>]);  </span><br><span class="line">        <span class="type">String</span> <span class="variable">keyProperty</span> <span class="operator">=</span> tableInfo.getKeyProperty();  </span><br><span class="line">        Assert.notEmpty(keyProperty, <span class="string">&quot;error: can not execute. because can not find column for id from entity!&quot;</span>, <span class="keyword">new</span> <span class="title class_">Object</span>[<span class="number">0</span>]);  </span><br><span class="line">        <span class="type">Object</span> <span class="variable">idVal</span> <span class="operator">=</span> tableInfo.getPropertyValue(entity, tableInfo.getKeyProperty());  </span><br><span class="line">        <span class="keyword">return</span> !StrUtil.isBlankIfStr(idVal) &amp;&amp; !StrUtil.isBlankIfStr(<span class="built_in">this</span>.getById((Serializable) idVal)) ? <span class="built_in">this</span>.updateById(entity) : <span class="built_in">this</span>.save(entity);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>代码方面没有什么复杂度。</p>
+<p> <code>saveOrUpdate</code> 方法中，首先做的是获取到对应的实体，<code>TableInfoHelper.getTableInfo(this.entityClass)</code> 该方法主要是获取对应实体，在跳转到对应方法上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> TableInfo <span class="title function_">getTableInfo</span><span class="params">(Class&lt;?&gt; clazz)</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (clazz != <span class="literal">null</span> &amp;&amp; !clazz.isPrimitive() &amp;&amp; !SimpleTypeRegistry.isSimpleType(clazz) &amp;&amp; !clazz.isInterface()) &#123;  </span><br><span class="line">        Class&lt;?&gt; targetClass = ClassUtils.getUserClass(clazz);  </span><br><span class="line">        <span class="type">TableInfo</span> <span class="variable">tableInfo</span> <span class="operator">=</span> (TableInfo)TABLE_INFO_CACHE.get(targetClass);  </span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">null</span> != tableInfo) &#123;  </span><br><span class="line">            <span class="keyword">return</span> tableInfo;  </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            <span class="keyword">for</span>(Class&lt;?&gt; currentClass = clazz; <span class="literal">null</span> == tableInfo &amp;&amp; Object.class != currentClass; tableInfo = (TableInfo)TABLE_INFO_CACHE.get(ClassUtils.getUserClass(currentClass))) &#123;  </span><br><span class="line">                currentClass = currentClass.getSuperclass();  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">if</span> (tableInfo != <span class="literal">null</span>) &#123;  </span><br><span class="line">                TABLE_INFO_CACHE.put(targetClass, tableInfo);  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            <span class="keyword">return</span> tableInfo;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 <code>tableInfo</code> 的主要来源是<code>TABLE_INFO_CACHE</code>，<code>**TABLE_INFO_CACHE**</code>类是一个用来储存反射类表信息的 map 对象。在项目启动的时候，<code>mybatisPlus</code> 通过反射调用 <code>initTableName()</code>  方法，获取表信息。如果我们在实体类中有添加对应的注解 <code>(@TableId,@TableField,@TableName)等</code> ，则通过注解获取配置的信息，如果没有，则调用数据库获取实体信息。</p>
+<p>拿到<code>tableInfo</code>之后，首先使用断言对数据进行判断，断言是一个不错的东西，对参数进行判断，如果满足条件会抛出异常。<br>其中在返回中<code>this.getById((Serializable) idVal)</code>，该方法查询了一次数据库，可能会有性能方面的问题。其他的好像没有什么了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>官方的代码和我们所写的代码在逻辑和流程方面是没有什么问题的，都是要对数据进行保存，不同的是官方的代码很精简，一个<code>saveOrUpdate</code>方法用到了断言，三目运算符。</p>
 
       
     </div>
@@ -263,7 +270,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/09/2023/06/%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/12/2023/06/2023-06-12-saveOrUpdate%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,8 +294,8 @@
     </a>
   
   
-    <a href="/2023/05/27/2023/05/2023-05-27-Spring%20Boot%20Jpa%20%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">持久层框架JPA与Mybatis该如何选型</div>
+    <a href="/2023/06/09/2023/06/2023-06-09-%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数组对象转对象数组</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -315,7 +322,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>

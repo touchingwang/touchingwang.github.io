@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>文章分类 | Hexo</title>
+  <title>数组对象转对象数组 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="剑气纵横三万里，一剑光寒十九州">
-<meta property="og:type" content="website">
-<meta property="og:title" content="文章分类">
-<meta property="og:url" content="http://example.com/categories/index.html">
+  <meta name="description" content="数组对象转对象数组">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组对象转对象数组">
+<meta property="og:url" content="http://example.com/2023/06/09/2023/06/2023-06-09-%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="剑气纵横三万里，一剑光寒十九州">
+<meta property="og:description" content="数组对象转对象数组">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-23T02:07:14.000Z">
-<meta property="article:modified_time" content="2023-06-01T06:36:51.154Z">
+<meta property="article:published_time" content="2023-06-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-09T08:18:23.228Z">
 <meta property="article:author" content="touchingwang">
+<meta property="article:tag" content="技术(23上)">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -165,32 +166,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-2023/06/2023-06-09-数组对象转对象数组" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      文章分类
+      数组对象转对象数组
     </h1>
   
 
         
-        <a href="/categories/index.html" class="archive-article-date">
-  	<time datetime="2022-06-23T02:07:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-23</time>
+        <a href="/2023/06/09/2023/06/2023-06-09-%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2023-06-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>今天遇到一个很奇葩的业务，要求把数据对象返回的同时也要返回它的对象数组。可以说学习使用类型转换是程序员必不可少的；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 数组对象</span><br><span class="line">[</span><br><span class="line">	&#123;</span><br><span class="line">		name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">		age: <span class="string">&quot;22&quot;</span>,</span><br><span class="line">		hobby: <span class="string">&quot;乒乓球&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	&#123;</span><br><span class="line">		name: <span class="string">&quot;李四&quot;</span>,</span><br><span class="line">		age: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">		hobby: <span class="string">&quot;钓鱼&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br><span class="line"># 对象数组</span><br><span class="line">&#123;</span><br><span class="line">	name: [<span class="string">&quot;张三&quot;</span>,<span class="string">&quot;李四&quot;</span>],</span><br><span class="line">	age: [<span class="string">&quot;22&quot;</span>,<span class="string">&quot;24&quot;</span>],</span><br><span class="line">	hobby: [<span class="string">&quot;乒乓球&quot;</span>,<span class="string">&quot;钓鱼&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>一开始我是在 <code>hutool</code>工具类中的 <code>Convert.convert(new Typerefrence&lt;&gt;()&#123;&#125;,data)</code>，可惜不能实现，于是就开始手动转了</p>
+<p>下面给上代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Map&lt;String, Object&gt;&gt; rsList = data;  </span><br><span class="line"><span class="comment">//创建对象  </span></span><br><span class="line">HashMap&lt;String, ArrayList&gt; rows = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();  </span><br><span class="line"><span class="keyword">if</span>(rsList.size()!=<span class="number">0</span>)&#123;  </span><br><span class="line">    Set&lt;String&gt; keySet = rsList.get(<span class="number">0</span>).keySet();  </span><br><span class="line">    <span class="keyword">for</span> (String s : keySet) &#123;  </span><br><span class="line">        rows.put(s,<span class="keyword">new</span> <span class="title class_">ArrayList</span>());  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">for</span> (Map&lt;String, Object&gt; map : rsList) &#123;  </span><br><span class="line">        Set&lt;String&gt; stringSet = map.keySet();  </span><br><span class="line">        <span class="keyword">for</span> (String s : stringSet) &#123;  </span><br><span class="line">            rows.get(s).add(map.get(s));  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码方面没有什么复杂度。</p>
+
       
     </div>
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术(23上)</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -241,7 +263,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/categories/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/09/2023/06/2023-06-09-%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -253,6 +275,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2023/06/12/2023/06/2023-06-12-saveOrUpdate%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          saveOrUpdate源码解析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/27/2023/05/2023-05-27-Spring%20Boot%20Jpa%20%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">持久层框架JPA与Mybatis该如何选型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -285,6 +326,16 @@
 
 
 
+  
+
+  
+
+  
+
+  
+
+  
+
 
           </div>
         </div>
@@ -311,7 +362,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
