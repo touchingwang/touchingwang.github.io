@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>BaseMapper源码解析 | Hexo</title>
+  <title>养老保险 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BaseMapper源码解析">
+  <meta name="description" content="养老保险">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BaseMapper源码解析">
-<meta property="og:url" content="http://example.com/2023/02/08/2023/02/2023-02-08-mybatisPlus%E4%B8%ADBaseMapper%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:title" content="养老保险">
+<meta property="og:url" content="http://example.com/2023/06/13/2023/06/2023-06-13-%E5%85%BB%E8%80%81%E4%BF%9D%E9%99%A9/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="BaseMapper源码解析">
+<meta property="og:description" content="养老保险">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-02-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-06-01T08:09:13.977Z">
+<meta property="og:image" content="https://s1.ax1x.com/2023/06/13/pCmwVw8.png">
+<meta property="article:published_time" content="2023-06-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-13T09:41:23.440Z">
 <meta property="article:author" content="touchingwang">
-<meta property="article:tag" content="技术(23上)">
+<meta property="article:tag" content="概念">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/06/13/pCmwVw8.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -166,98 +168,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2023/02/2023-02-08-mybatisPlus中BaseMapper源码解析" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2023/06/2023-06-13-养老保险" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      BaseMapper源码解析
+      养老保险
     </h1>
   
 
         
-        <a href="/2023/02/08/2023/02/2023-02-08-mybatisPlus%E4%B8%ADBaseMapper%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2023-02-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-08</time>
+        <a href="/2023/06/13/2023/06/2023-06-13-%E5%85%BB%E8%80%81%E4%BF%9D%E9%99%A9/" class="archive-article-date">
+  	<time datetime="2023-06-12T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>你会发现BaseMapper接口中的方法都很简洁,容易理解,有种大道至简的味道。</p>
-<h3 id="mybatisPlus-v3-5-3-1"><a href="#mybatisPlus-v3-5-3-1" class="headerlink" title="mybatisPlus v3.5.3.1"></a>mybatisPlus v3.5.3.1</h3><blockquote>
-<p>看到这篇文章,说明你对<code>IService接口</code>有了了解。<code>IService</code>是<code>mybatisPlus</code>提供的一个接口,该接口包含了一些封装的<code>ServiceCRUD</code>,进一步封装<code>CRUD</code>采用<code>get查询单行``remove删除``list查询``page分页</code>浅醉命名方式区分<code>Mapper</code>层<code>BaseMapper</code>避免混淆。</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/baomidou/mybatis-plus/blob/3.0/mybatis-plus-extension/src/main/java/com/baomidou/mybatisplus/extension/service/IService.java">IService</a></p>
+        <div align="center">
+<img src="https://s1.ax1x.com/2023/06/13/pCmwVw8.png" width="60%" margin="auto">
+</div>
 <span id="more"></span>
 
-<h3 id="BaseMapper接口注解"><a href="#BaseMapper接口注解" class="headerlink" title="BaseMapper接口注解"></a>BaseMapper接口注解</h3><p>首先我们看一下作者是如何定义这个接口的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Mapper 继承该接口后，无需编写 mapper.xml 文件，即可获得CRUD功能</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;这个 Mapper 支持 id 泛型&lt;/p&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> hubin</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2016-01-23</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<p>可以看到作者十分的谦虚,并不像写IService接口时那样猖狂(说IService是顶级Service接口)。</p>
-<p><code>Java语言</code>我们了解,接口里面的变量只能为常量,方法只能是抽象方法,我们不能在接口中写方法的具体实现操作。<code>Java8.0</code>之后,官方更新新增了默认方法和静态方法,也就是说<code>java8</code>以后,我们可以在接口中写具体的方法和方法的实现。</p>
-<p>我讲这个的原因是因为<code>BaseMapper接口</code>中有各种各样的方法,抽象方法、默认方法和静态方法。我们提前了解每个方法是什么样子的,这样有助于我们接下来解析源码。</p>
-<p>这里我也主要是对<code>BaseMapper接口</code>中方法的解析,方法总的有19个。</p>
-<table>
-<thead>
-<tr>
-<th align="center">类型</th>
-<th align="center">方法个数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">插入方法</td>
-<td align="center">1</td>
-</tr>
-<tr>
-<td align="center">删除方法</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td align="center">修改方法</td>
-<td align="center">2</td>
-</tr>
-<tr>
-<td align="center">查询方法</td>
-<td align="center">10</td>
-</tr>
-<tr>
-<td align="center">其他判断方法</td>
-<td align="center">2</td>
-</tr>
-</tbody></table>
-<p>可以看到查询方法占了所有方法的一半,看来查询很重要啊</p>
-<h3 id="1-插入方法"><a href="#1-插入方法" class="headerlink" title="1.插入方法"></a>1.插入方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 插入一条记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> entity 实体对象</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">insert</span><span class="params">(T entity)</span>;</span><br></pre></td></tr></table></figure>
-<p>BaseMapper接口的insert方法是一个常见的抽象方法。里面做的操作我觉得只要是了解数据库的都知道,插入一条数据。</p>
-<p>对于数据的操作BaseMapper接口只有这一种。</p>
-<h3 id="1-插入方法-1"><a href="#1-插入方法-1" class="headerlink" title="1.插入方法"></a>1.插入方法</h3><h4 id="1-1-插入一条记录"><a href="#1-1-插入一条记录" class="headerlink" title="1.1 插入一条记录"></a>1.1 插入一条记录</h4><h3 id="1-删除方法"><a href="#1-删除方法" class="headerlink" title="1.删除方法"></a>1.删除方法</h3><h4 id="2-1-根据-ID-删除"><a href="#2-1-根据-ID-删除" class="headerlink" title="2.1 根据 ID 删除"></a>2.1 根据 ID 删除</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 ID 删除</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> id 主键ID</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteById</span><span class="params">(Serializable id)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据实体(ID)删除</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> entity 实体对象</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@since</span> 3.4.4</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteById</span><span class="params">(T entity)</span>;</span><br></pre></td></tr></table></figure>
-<p>常见、易理解的删除操作,一种根据id、一种根据实体对象。</p>
-<h4 id="2-2-根据-columnMap-条件，删除记录"><a href="#2-2-根据-columnMap-条件，删除记录" class="headerlink" title="2.2 根据 columnMap 条件，删除记录"></a>2.2 根据 columnMap 条件，删除记录</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 columnMap 条件，删除记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> columnMap 表字段 map 对象</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteByMap</span><span class="params">(<span class="meta">@Param(Constants.COLUMN_MAP)</span> Map&lt;String, Object&gt; columnMap)</span>;</span><br></pre></td></tr></table></figure>
-<p>抽象方法deleteByMap,对于这些方法的后缀命名规则如果是by后缀+类型,代表着参数,后缀直接加类型的是返回值类型</p>
-<h4 id="2-3-根据-entity-条件，删除记录"><a href="#2-3-根据-entity-条件，删除记录" class="headerlink" title="2.3 根据 entity 条件，删除记录"></a>2.3 根据 entity 条件，删除记录</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 entity 条件，删除记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null,里面的 entity 用于生成 where 语句）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">delete</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
-<p>如果你想有规则的批量删除数据,用这个删除方法无疑是最好的。</p>
-<h4 id="2-4-删除（根据ID或实体-批量删除）"><a href="#2-4-删除（根据ID或实体-批量删除）" class="headerlink" title="2.4 删除（根据ID或实体 批量删除）"></a>2.4 删除（根据ID或实体 批量删除）</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 删除（根据ID或实体 批量删除）</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> idList 主键ID列表或实体列表(不能为 null 以及 empty)</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">deleteBatchIds</span><span class="params">(<span class="meta">@Param(Constants.COLL)</span> Collection&lt;?&gt; idList)</span>;</span><br></pre></td></tr></table></figure>
-<p>对于同一个表一次删除很多无规则的数据十分让人头疼,使用这种删除方法让你疼的轻点。</p>
-<h3 id="3-修改方法"><a href="#3-修改方法" class="headerlink" title="3. 修改方法"></a>3. 修改方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 ID 修改</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> entity 实体对象</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">updateById</span><span class="params">(<span class="meta">@Param(Constants.ENTITY)</span> T entity)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 whereEntity 条件，更新记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> entity        实体对象 (set 条件值,可以为 null)</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> updateWrapper 实体对象封装操作类（可以为 null,里面的 entity 用于生成 where 语句）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">update</span><span class="params">(<span class="meta">@Param(Constants.ENTITY)</span> T entity, <span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; updateWrapper)</span>;</span><br></pre></td></tr></table></figure>
-<p>想要修改数据,BaseMapper接口提供了两种食用的方法。<br>一种是通过主键id进行修改的updateById方法,一种是万能的update修改方法。</p>
-<p>IService接口中的修改和BaseMapper接口中修改的前缀命名方式都是update</p>
-<h3 id="4-查询方法"><a href="#4-查询方法" class="headerlink" title="4.查询方法"></a>4.查询方法</h3><h4 id="4-1-查询一条记录的2个方法"><a href="#4-1-查询一条记录的2个方法" class="headerlink" title="4.1 查询一条记录的2个方法"></a>4.1 查询一条记录的2个方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 ID 查询</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> id 主键ID</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">T <span class="title function_">selectById</span><span class="params">(Serializable id)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 entity 条件，查询一条记录</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;查询一条记录，例如 qw.last(&quot;limit 1&quot;) 限制取一条记录, 注意：多条数据会报异常&lt;/p&gt;</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">default</span> T <span class="title function_">selectOne</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span> &#123;</span><br><span class="line">    List&lt;T&gt; list = <span class="built_in">this</span>.selectList(queryWrapper);</span><br><span class="line">    <span class="comment">// 抄自 DefaultSqlSession#selectOne</span></span><br><span class="line">    <span class="keyword">if</span> (list.size() == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> list.get(<span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (list.size() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TooManyResultsException</span>(<span class="string">&quot;Expected one result (or null) to be returned by selectOne(), but found: &quot;</span> + list.size());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>selectById方法通过主键id查询一条记录。selectOne方法根据wrapper条件查询出一条结果,这里不仅在sql语句上加了limit语法限制(这里应该是通过反射在wrapper参数中链式拼接了limit语法),同时在该方法里对取出来的数据进行大小判断。</p>
-<p>在返回的参数方面,查询出一条记录的参数类型都是实体对象。</p>
-<h4 id="4-2-批量查询的5个方法"><a href="#4-2-批量查询的5个方法" class="headerlink" title="4.2 批量查询的5个方法"></a>4.2 批量查询的5个方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 查询（根据ID 批量查询）</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> idList 主键ID列表(不能为 null 以及 empty)</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">selectBatchIds</span><span class="params">(<span class="meta">@Param(Constants.COLL)</span> Collection&lt;? extends Serializable&gt; idList)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 查询（根据 columnMap 条件）</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> columnMap 表字段 map 对象</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">selectByMap</span><span class="params">(<span class="meta">@Param(Constants.COLUMN_MAP)</span> Map&lt;String, Object&gt; columnMap)</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 entity 条件，查询全部记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">List&lt;T&gt; <span class="title function_">selectList</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 Wrapper 条件，查询全部记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">List&lt;Map&lt;String, Object&gt;&gt; <span class="title function_">selectMaps</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 Wrapper 条件，查询全部记录</span></span><br><span class="line"><span class="comment">  * &lt;p&gt;注意： 只返回第一个字段的值&lt;/p&gt;</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">List&lt;Object&gt; <span class="title function_">selectObjs</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 entity 条件，查询全部记录（并翻页）</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> page         分页查询条件（可以为 RowBounds.DEFAULT）</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&lt;P <span class="keyword">extends</span> <span class="title class_">IPage</span>&lt;T&gt;&gt; P <span class="title function_">selectPage</span><span class="params">(P page, <span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 Wrapper 条件，查询全部记录（并翻页）</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> page         分页查询条件</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&lt;P <span class="keyword">extends</span> <span class="title class_">IPage</span>&lt;Map&lt;String, Object&gt;&gt;&gt; P <span class="title function_">selectMapsPage</span><span class="params">(P page, <span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
-<p>对于这些方法的后缀命名规则如果是by后缀+类型,代表着参数,后缀直接加类型的是返回值类型</p>
-<p>有了这个命名规则我们一眼可以看出第二个方法是参数为map的批量查询,其他的都是返回值类型各式各样的批次查询。</p>
-<h3 id="5-其他方法2个"><a href="#5-其他方法2个" class="headerlink" title="5.其他方法2个"></a>5.其他方法2个</h3><h4 id="5-1-根据-Wrapper-条件，查询总记录数"><a href="#5-1-根据-Wrapper-条件，查询总记录数" class="headerlink" title="5.1 根据 Wrapper 条件，查询总记录数"></a>5.1 根据 Wrapper 条件，查询总记录数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 Wrapper 条件，查询总记录数</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类（可以为 null）</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">Long <span class="title function_">selectCount</span><span class="params">(<span class="meta">@Param(Constants.WRAPPER)</span> Wrapper&lt;T&gt; queryWrapper)</span>;</span><br></pre></td></tr></table></figure>
-<p>这个也是十分常用的一个判断。返回满足条件的查询记录数量。</p>
-<h4 id="5-2-根据-Wrapper-条件，判断是否存在记录"><a href="#5-2-根据-Wrapper-条件，判断是否存在记录" class="headerlink" title="5.2 根据 Wrapper 条件，判断是否存在记录"></a>5.2 根据 Wrapper 条件，判断是否存在记录</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 根据 Wrapper 条件，判断是否存在记录</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@param</span> queryWrapper 实体对象封装操作类</span></span><br><span class="line"><span class="comment">  * <span class="doctag">@return</span> 是否存在记录</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">default</span> <span class="type">boolean</span> <span class="title function_">exists</span><span class="params">(Wrapper&lt;T&gt; queryWrapper)</span> &#123;</span><br><span class="line">    <span class="type">Long</span> <span class="variable">count</span> <span class="operator">=</span> <span class="built_in">this</span>.selectCount(queryWrapper);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span> != count &amp;&amp; count &gt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>exists方法可以说是selectCount方法的一个扩展,也是很实用的。</p>
-<h3 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h3><p>我推荐在开发的时候使用BaseMapper接口中的方法。推荐的理由有以下几点：</p>
-<ol>
-<li>BaseMapper接口中的方法更接近数据库语言。</li>
-<li>IService接口中的方法大部分都是继承BaseMapper接口中的方法。同样的方法使用BaseMapper接口中方法都可以实现。</li>
-<li>如果说将来mybatisPlus对代码进行了大量重构,BaseMapper接口处于IService接口上面,受到的影响会更小。</li>
+<p>养老保险分类：</p>
+<p>养老保险是国家和社会根据相关法律法规规定，为解决劳动者在达到国家法定退休年龄，或因年老丧失劳动能力退出劳动岗位后的基本生活而建立的一种社会保险制度。社会保险五大险种（养老保险、医疗保险、失业保险、工伤保险、生育保险）与住房公积金合称“五险一金”。</p>
+<p>基本养老保险可以按照职工基本养老保险和城乡居民养老保险分类，职工基本养老保险又可分为企业职工基本养老保险和机关事业单位基本养老保险。</p>
+<p>1.城乡居民基本养老保险。参保人群为年满16周岁（不含在校学生），非国家机关和事业单位工作人员及不属于职工基本养老保险制度覆盖范围的城乡居民。实行按年缴费，缴费标准可按照相关规定自选档次。</p>
+<p>2.企业职工养老保险。城镇各类企业职工、个体工商户和灵活就业人员都可以参加企业职工基本养老保险，按照规定的比例或档次进行缴费，达到法定退休年龄时，累计缴费年限满15年以上，可以按月领取基本养老金。</p>
+<p>3.机关事业养老保险。参保人员为参照公务员法管理的单位、参照公务员法管理的机关（单位）、事业单位及其编制内的工作人员，按照规定的比例进行缴费，达到法定退休年龄且缴费年限累计满15年的可以领取养老金。</p>
+<h2 id="职工基本养老保险"><a href="#职工基本养老保险" class="headerlink" title="职工基本养老保险"></a>职工基本养老保险</h2><p>职工基本养老保险是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%99%A9/73529?fromModule=lemma_inlink">社会保险</a>中的一个险种。社会保险是指国家通过立法，多渠道筹集资金，对劳动者在年老、失业、患病、工伤、生育而减少<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%B3%E5%8A%A8%E6%94%B6%E5%85%A5/8373772?fromModule=lemma_inlink">劳动收入</a>时给予<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BB%8F%E6%B5%8E%E8%A1%A5%E5%81%BF/4781055?fromModule=lemma_inlink">经济补偿</a>，使他们能够享有基本生活保障的一项社会保障。</p>
+<p>职工基本养老保险的缴纳比例是：全国各地区企业<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BC%B4%E8%B4%B9%E7%8E%87/11012958?fromModule=lemma_inlink">缴费率</a>统一降至16% [7]  ，职工个人承担8%，个人缴的那8%划入<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AA%E4%BA%BA%E8%B4%A6%E6%88%B7/15634985?fromModule=lemma_inlink">个人账户</a>。</p>
+<h3 id="保费缴纳"><a href="#保费缴纳" class="headerlink" title="保费缴纳"></a>保费缴纳</h3><h4 id="单位缴费"><a href="#单位缴费" class="headerlink" title="单位缴费"></a>单位缴费</h4><p>用人单位应按照国家规定的本单位职工<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%A5%E8%B5%84%E6%80%BB%E9%A2%9D/2776271?fromModule=lemma_inlink">工资总额</a>的比例缴纳基本<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%BB%E8%80%81%E4%BF%9D%E9%99%A9/853313?fromModule=lemma_inlink">养老保险</a>费，记入基本养老保险统筹基金。企业缴费的比例一般不得超过企业工资总额的20%，具体比例由省、自治区、直辖市政府确定，少数省、自治区、直辖市离退休人数较多，养老保险负担较重，确实需要超过企业工资总额的20%的，需要报人力资源和社会保障部、财政部的批准。</p>
+<h4 id="个人缴费"><a href="#个人缴费" class="headerlink" title="个人缴费"></a>个人缴费</h4><ol>
+<li><p>缴费基数与比例<br>从2006年1月1日起，个人账户的规模统一由本人<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BC%B4%E8%B4%B9%E5%B7%A5%E8%B5%84/8916898?fromModule=lemma_inlink">缴费工资</a>的11%调整为8%，全部由个人缴费形成，单位缴费不再划入个人账户。其中，缴费工资，也称为缴费<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%A5%E8%B5%84%E5%9F%BA%E6%95%B0/7417811?fromModule=lemma_inlink">工资基数</a>，一般为职工本人上一年度月平均工资（有条件的地区也可以本人上月<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%A5%E8%B5%84%E6%94%B6%E5%85%A5/15565202?fromModule=lemma_inlink">工资收入</a>为个人缴费工资基数）。月平均工资按照国家统计局规定列入工资总额统计的项目计算，包括工资、奖金、津贴、补贴等收入，不包括用人单位承担或者支付给员工的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%99%A9%E8%B4%B9/1449825?fromModule=lemma_inlink">社会保险费</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%B3%E5%8A%A8%E4%BF%9D%E6%8A%A4%E8%B4%B9/5504983?fromModule=lemma_inlink">劳动保护费</a>、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A6%8F%E5%88%A9%E8%B4%B9/1009887?fromModule=lemma_inlink">福利费</a>、用人单位与员工解除<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%B3%E5%8A%A8%E5%85%B3%E7%B3%BB/80984?fromModule=lemma_inlink">劳动关系</a>时支付的一次性补偿以及计划生育费用等其他不属于工资的费用。</p>
+</li>
+<li><p>个人账户累计储存额的计算<br>月储存额&#x3D;本人<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%88%E7%BC%B4%E8%B4%B9%E5%B7%A5%E8%B5%84/7162264?fromModule=lemma_inlink">月缴费工资</a>*8%</p>
+</li>
 </ol>
+<p>本人月平均工资低于当地职工月平均工资的60%的，按照当地职工月平均工资的60%作为缴费基数。本人月平均工资高于当地<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%81%8C%E5%B7%A5%E5%B9%B3%E5%9D%87%E5%B7%A5%E8%B5%84/2312150?fromModule=lemma_inlink">职工平均工资</a>的300%的，按照当地职工的月平均工资的300%作为缴费基数。</p>
+<h3 id="条件待遇"><a href="#条件待遇" class="headerlink" title="条件待遇"></a>条件待遇</h3><h4 id="领取条件"><a href="#领取条件" class="headerlink" title="领取条件"></a>领取条件</h4><ol>
+<li>本人达到<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B3%95%E5%AE%9A%E9%80%80%E4%BC%91%E5%B9%B4%E9%BE%84/9434819?fromModule=lemma_inlink">法定退休年龄</a>并办理了退休手续；</li>
+<li>所在单位和个人依法参加基本养老保险并履行缴费义务；</li>
+<li>个人累计缴费时间满15年。<br>（注：养老保险若出现缴费中断现象，可延续缴费或者一次性缴费至15年，均可享受养老保险的相关待遇）</li>
+</ol>
+<h4 id="享受的待遇"><a href="#享受的待遇" class="headerlink" title="享受的待遇"></a>享受的待遇</h4><ol>
+<li>按月领取按规定计发的基本养老金，直至死亡。</li>
+<li>享受基本养老金的正常调整待遇。</li>
+<li>对企业退休人员实行社会化<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/5677565?fromModule=lemma_inlink">管理服务</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AD%BB%E4%BA%A1%E5%BE%85%E9%81%87/22502698?fromModule=lemma_inlink">死亡待遇</a>：<ul>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%A7%E8%91%AC%E8%B4%B9/4646288?fromModule=lemma_inlink">丧葬费</a>：按上年度全省社平工资的3个月计发（此为退休人员，离休人员为5000元）；</li>
+<li>一次性<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%8A%9A%E6%81%A4%E8%B4%B9/23112032?fromModule=lemma_inlink">抚恤费</a>：按上年度全省社平工资的10个月计发（此为退休人员，离休人员为本人工资的20个月）；</li>
+<li>符合供养条件的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9B%B4%E7%B3%BB%E4%BA%B2%E5%B1%9E/1062060?fromModule=lemma_inlink">直系亲属</a>生活困难补助费，按月发放，直至供养直系亲属死亡<br> （注：死亡待遇各省规定各不相同，详细待遇情况请咨询当地社保局为准）</li>
+</ul>
+</li>
+</ol>
+<h3 id="计算举例"><a href="#计算举例" class="headerlink" title="计算举例"></a>计算举例</h3><p>以下三位年龄、收入不同，假设工资不变，且缴纳<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AF%94%E4%BE%8B%E7%B3%BB%E6%95%B0/8555193?fromModule=lemma_inlink">比例系数</a>都为1，且个人账户无利息的情况，都在60岁退休的人为例，他们每个人退休后每个月可以从社保中领取的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%BB%E8%80%81%E9%87%91/23517?fromModule=lemma_inlink">养老金</a>金额如下：</p>
+<p><strong>1，25岁，月收入2000元</strong></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%BA%E7%A1%80%E5%85%BB%E8%80%81%E9%87%91/9368437?fromModule=lemma_inlink">基础养老金</a>：2362（2004年北京<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A4%BE%E5%B9%B3%E5%B7%A5%E8%B5%84/10373719?fromModule=lemma_inlink">社平工资</a>）×35×1%&#x3D;827元，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%AA%E4%BA%BA%E8%B4%A6%E6%88%B7%E5%85%BB%E8%80%81%E9%87%91/18219835?fromModule=lemma_inlink">个人账户养老金</a>：2000×8%&#x3D;160（一个月个人上缴社保养老费用），160×12&#x3D;1920（一年上缴社保养老费用）</p>
+<p>1920×35&#x3D;67200（从现在至退休，35年个人所缴纳的全部社保养老费用，也就是个人账户累计余额），67200÷120&#x3D;560（退休后，每月领取的个人账户养老金数额），827（基础养老金）+560（个人账户养老金）&#x3D;1387（退休后每月领取养老金数额），也就是说，李退休后，每月可以领取养老金为1387元。</p>
+<p>用李退休后的养老金除以其现在每月的工资，得到的数字称作“<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9B%BF%E4%BB%A3%E7%8E%87/6050729?fromModule=lemma_inlink">替代率</a>”，也就是退休时和在职时的收入比。</p>
+<p>1387÷2000&#x3D;69.4%</p>
+<p>也就是说，李退休时领取的养老金，相对于在职时工资的替代率为69.4%。</p>
+<p>在上面的计算中，其实有很多是变量，如个人月收入、社平工资，以及20%、8%等，都有可能根据个人自身变化和国家政策的调整而改变，所以最后计算出的李退休后每月领取1387元<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%BB%E8%80%81%E9%87%91?fromModule=lemma_inlink">养老金</a>，可能在35年后，会有很大变化。但是替代率变化不会很大，不同人计算出的不同替代率，基本可以反映其在退休时领取的养老金，能替代多少现在的收入。</p>
+<p><strong>2，30岁，月收入4000元</strong></p>
+<p>基础养老金：2362×30×1%&#x3D;709元</p>
+<p>个人账户养老金：4000×8%&#x3D;320元（一个月个人上缴社保养老费用），320×12&#x3D;3840元（一年上缴社保养老费用），3840×30&#x3D;115200元（从现在至退休，30年个人所缴纳的全部社保养老费用。也就是个人账户累计余额），115200÷120&#x3D;960元（退休后，每月领取的个人账户养老金数额），709+960&#x3D;1669元（退休后每月领取养老金数额），1669÷4000&#x3D;41.7%（替代率）</p>
+<p><strong>3，35岁，月收入10000元</strong></p>
+<p>基础养老金：2362×25×1%&#x3D;591元</p>
+<p>个人账户养老金：10000×8%&#x3D;800元（一个月个人上缴社保养老费用），800×12&#x3D;9600元（一年上缴社保养老费用），9600×25&#x3D;240000元（从现在至退休，25年个人所缴纳的全部社保养老费用。也就是个人账户累计余额），240000÷120&#x3D;2000元（退休后，每月领取的个人账户养老金数额），591+2000&#x3D;2591元（退休后每月领取养老金数额），2591÷10000&#x3D;25.91%（替代率）</p>
+<h3 id="总体来说"><a href="#总体来说" class="headerlink" title="总体来说"></a>总体来说</h3><p>缴费三十年养老金可达在职收入六成</p>
+<p>从上面的计算，不难看出，收入越高，替代率越低；也就是说，在职时收入越高的人，退休后“钱不够花”的感觉会越强烈。有意思的是，与很多30来岁就开始担心“老了会活成什么样，生活品质会下降多少”的人相比，有些“<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%88%E5%85%89%E6%97%8F/113878?fromModule=lemma_inlink">月光族</a>”、“<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%95%83%E8%80%81%E6%97%8F/1115699?fromModule=lemma_inlink">啃老族</a>”对未来却挺坦然：“等我老了，退休了，花销自然就没有了，拿着养老金够活的了。”</p>
+<p>专家却有着不同的看法。对外经贸大学韩老师认为，很多“<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%88%E5%85%89%E6%97%8F?fromModule=lemma_inlink">月光族</a>”已经养成了大手大脚花钱的习惯，而这个习惯是很难因为收入突然降低而改变。而且“月光族”一般收入还不算少，一旦支出大幅度减少，他们的生活会有很大变化。不仅是对于“月光族”，对于绝大多数靠工资生活的人，特别是收入较高的，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A4%BE%E4%BC%9A%E4%BF%9D%E9%99%A9/73529?fromModule=lemma_inlink">社会保险</a>只能起到基本的保障作用，很难继续保证在职时的生活水准。</p>
+<p>从2006年1月1日起，养老金个人账户的规模统一由本人缴费工资的11%调整为8%，全部由个人缴费形成，单位缴费不再划入个人账户。以职工<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BC%B4%E8%B4%B9%E5%B9%B4%E9%99%90/10999029?fromModule=lemma_inlink">缴费年限</a>35年退休为例，改革前<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%BA%E6%9C%AC%E5%85%BB%E8%80%81%E9%87%91/8380331?fromModule=lemma_inlink">基本养老金</a>的目标替代率是58.5%，改革后目标替代率将达到59.2%。也就是说，我们退休时领取的养老金，可以达到在职时收入的六成。那么，对于那些追求生活品质的人来说，缺口的四成，就需要或是丰厚的存款，或是能够保本生钱的投资。</p>
 
       
     </div>
@@ -269,7 +254,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术(23上)</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">概念</a>
         		</li>
       		
 		</ul>
@@ -325,7 +310,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/02/08/2023/02/2023-02-08-mybatisPlus%E4%B8%ADBaseMapper%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/13/2023/06/2023-06-13-%E5%85%BB%E8%80%81%E4%BF%9D%E9%99%A9/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -339,18 +324,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/02/28/2023/02/2023-02-28-Monthly%20Review-2%E6%9C%88/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/12/07/2034/2034-12-07-%E7%BD%AE%E9%A1%B6/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          复盘丨Monthly Review-2月
+          置顶|
         
       </div>
     </a>
   
   
-    <a href="/2023/02/01/2023/02/2023-02-01-Iservice%E3%80%81ServiceImpl%E5%92%8CBaseMapper/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Iservice、ServiceImpl和BaseMapper</div>
+    <a href="/2023/06/12/2023/06/2023-06-12-saveOrUpdate%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">saveOrUpdate源码解析</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -377,7 +362,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mybatisPlus-v3-5-3-1"><span class="toc-number">1.</span> <span class="toc-text">mybatisPlus v3.5.3.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BaseMapper%E6%8E%A5%E5%8F%A3%E6%B3%A8%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">BaseMapper接口注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8F%92%E5%85%A5%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">1.插入方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8F%92%E5%85%A5%E6%96%B9%E6%B3%95-1"><span class="toc-number">4.</span> <span class="toc-text">1.插入方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E6%8F%92%E5%85%A5%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95"><span class="toc-number">4.1.</span> <span class="toc-text">1.1 插入一条记录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A0%E9%99%A4%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">1.删除方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%A0%B9%E6%8D%AE-ID-%E5%88%A0%E9%99%A4"><span class="toc-number">5.1.</span> <span class="toc-text">2.1 根据 ID 删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E6%A0%B9%E6%8D%AE-columnMap-%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%88%A0%E9%99%A4%E8%AE%B0%E5%BD%95"><span class="toc-number">5.2.</span> <span class="toc-text">2.2 根据 columnMap 条件，删除记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%A0%B9%E6%8D%AE-entity-%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%88%A0%E9%99%A4%E8%AE%B0%E5%BD%95"><span class="toc-number">5.3.</span> <span class="toc-text">2.3 根据 entity 条件，删除记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E5%88%A0%E9%99%A4%EF%BC%88%E6%A0%B9%E6%8D%AEID%E6%88%96%E5%AE%9E%E4%BD%93-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">2.4 删除（根据ID或实体 批量删除）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">3. 修改方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">4.查询方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E6%9F%A5%E8%AF%A2%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95%E7%9A%842%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">7.1.</span> <span class="toc-text">4.1 查询一条记录的2个方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2%E7%9A%845%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text">4.2 批量查询的5个方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%952%E4%B8%AA"><span class="toc-number">8.</span> <span class="toc-text">5.其他方法2个</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E6%A0%B9%E6%8D%AE-Wrapper-%E6%9D%A1%E4%BB%B6%EF%BC%8C%E6%9F%A5%E8%AF%A2%E6%80%BB%E8%AE%B0%E5%BD%95%E6%95%B0"><span class="toc-number">8.1.</span> <span class="toc-text">5.1 根据 Wrapper 条件，查询总记录数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E6%A0%B9%E6%8D%AE-Wrapper-%E6%9D%A1%E4%BB%B6%EF%BC%8C%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E8%AE%B0%E5%BD%95"><span class="toc-number">8.2.</span> <span class="toc-text">5.2 根据 Wrapper 条件，判断是否存在记录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">6.总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%8C%E5%B7%A5%E5%9F%BA%E6%9C%AC%E5%85%BB%E8%80%81%E4%BF%9D%E9%99%A9"><span class="toc-number">1.</span> <span class="toc-text">职工基本养老保险</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E8%B4%B9%E7%BC%B4%E7%BA%B3"><span class="toc-number">1.1.</span> <span class="toc-text">保费缴纳</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%BD%8D%E7%BC%B4%E8%B4%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">单位缴费</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E7%BC%B4%E8%B4%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text">个人缴费</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%BE%85%E9%81%87"><span class="toc-number">1.2.</span> <span class="toc-text">条件待遇</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%86%E5%8F%96%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">领取条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%AB%E5%8F%97%E7%9A%84%E5%BE%85%E9%81%87"><span class="toc-number">1.2.2.</span> <span class="toc-text">享受的待遇</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.3.</span> <span class="toc-text">计算举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E6%9D%A5%E8%AF%B4"><span class="toc-number">1.4.</span> <span class="toc-text">总体来说</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
