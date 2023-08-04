@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>RestTemplate实用 | Hexo</title>
+  <title>Tag: Java核心基础 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RestTemplate实用">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RestTemplate实用">
-<meta property="og:url" content="http://example.com/2023/03/23/2023/03/2023-03-23/index.html">
+  <meta name="description" content="剑气纵横三万里，一剑光寒十九州">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/tags/Java%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RestTemplate实用">
+<meta property="og:description" content="剑气纵横三万里，一剑光寒十九州">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-03-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-06-16T09:22:06.637Z">
 <meta property="article:author" content="touchingwang">
-<meta property="article:tag" content="技术(23上)">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -166,85 +163,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2023/03/2023-03-23" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      RestTemplate实用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/06/09/2023/06/2023-06-09/" class="archive-article-date">
+  	<time datetime="2023-06-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2023/06/09/2023/06/2023-06-09/">数组对象转对象数组</a>
     </h1>
   
 
-        
-        <a href="/2023/03/23/2023/03/2023-03-23/" class="archive-article-date">
-  	<time datetime="2023-03-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>最近在开发中遇到了与外部接口请求的业务，发现大佬的代码中用到了一个类<code>RestTemplate</code>，特此：找了一篇优秀的文章来学习、封装使用RestTemplate。<br>让自己再次遇到类似业务能够使用自己的请求工具快速上手熟悉。</p>
-</blockquote>
-<span id="more"></span>
-
-<p>RestTemplate 是由Spring提供的一个HTTP请求工具，它提供了常见的REST请求方案的模板，例如GET请求、POST请求、PUT请求、DELETE请求以及一些通过的请求执行方法 exchange 以及execute。RestTemplate 继承自 InterceptingHttpAccessor 并且实现类 RestOperations 接口，其中 RestOperations 接口定义了基本的 RESTful 操作，这些操作在 RestTemplate 中都得到了实现。</p>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><h3 id="postForObject"><a href="#postForObject" class="headerlink" title="postForObject"></a>postForObject</h3><p>1、使用LinkedMultiValueMap作为参数（Form表单提交）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="comment">//使用LinkedMultiValueMap作为参数（Form表单提交）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postForObject1</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post/RequestBody&quot;</span>;</span><br><span class="line">    <span class="comment">// String url = &quot;http://127.0.0.1:8998/test/post/RequestParam&quot;;</span></span><br><span class="line">    <span class="comment">// String url = &quot;http://127.0.0.1:8998/test/post&quot;;</span></span><br><span class="line"></span><br><span class="line">    LinkedMultiValueMap&lt;String, Object&gt; paramMap = <span class="keyword">new</span> <span class="title class_">LinkedMultiValueMap</span>&lt;&gt;();</span><br><span class="line">    paramMap.add(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line">    paramMap.add(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> restTemplate.postForObject(url, paramMap, String.class);</span><br><span class="line">    <span class="comment">//如果后台想要接收id或name参数,需要后端接收的名称和传递的名称一样</span></span><br><span class="line">    System.out.println(<span class="string">&quot;result:&quot;</span> + result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、使用Object作为参数（JSON提交）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="comment">//使用Object作为参数（JSON提交）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postForObject2</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">123</span>, <span class="string">&quot;张三&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> restTemplate.postForObject(url, user, String.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;result:&quot;</span> + result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>3、使用JSONObject作为参数（JSON提交）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="comment">//使用JSONObject作为参数（JSON提交）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postForObject3</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">JSONObject</span> <span class="variable">object</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">    object.put(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line">    object.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> restTemplate.postForObject(url, object, String.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;result:&quot;</span> + result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="postForEntity"><a href="#postForEntity" class="headerlink" title="postForEntity"></a>postForEntity</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="comment">//使用LinkedMultiValueMap作为参数（Form表单提交）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postForEntity1</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post/RequestBody&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">HttpHeaders</span> <span class="variable">headers</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpHeaders</span>();</span><br><span class="line">    headers.set(<span class="string">&quot;token&quot;</span>,<span class="string">&quot;token&quot;</span>);</span><br><span class="line">    headers.setContentType(MediaType.APPLICATION_JSON);</span><br><span class="line"></span><br><span class="line">    LinkedMultiValueMap&lt;String, Object&gt; paramMap = <span class="keyword">new</span> <span class="title class_">LinkedMultiValueMap</span>&lt;&gt;();</span><br><span class="line">    paramMap.add(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line">    paramMap.add(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;张三&quot;</span>);</span><br><span class="line"></span><br><span class="line">    HttpEntity&lt;MultiValueMap&lt;String, Object&gt;&gt; httpEntity = <span class="keyword">new</span> <span class="title class_">HttpEntity</span>&lt;&gt;(paramMap, headers);</span><br><span class="line">    ResponseEntity&lt;String&gt; response = restTemplate.postForEntity(url, httpEntity, String.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;============================&quot;</span>);</span><br><span class="line">    System.out.println(<span class="string">&quot;result:&quot;</span> + response.getBody());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"> <span class="comment">//使用Object作为参数（JSON提交）</span></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postForEntity2</span><span class="params">()</span> &#123;</span><br><span class="line">     <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">     <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post/RequestBody&quot;</span>;</span><br><span class="line"></span><br><span class="line">     <span class="type">HttpHeaders</span> <span class="variable">headers</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpHeaders</span>();</span><br><span class="line">     headers.set(<span class="string">&quot;token&quot;</span>,<span class="string">&quot;token&quot;</span>);</span><br><span class="line">     <span class="comment">// headers.setContentType(MediaType.APPLICATION_JSON);</span></span><br><span class="line"></span><br><span class="line">     <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>(<span class="number">123</span>, <span class="string">&quot;张三&quot;</span>);</span><br><span class="line">     HttpEntity&lt;User&gt; httpEntity = <span class="keyword">new</span> <span class="title class_">HttpEntity</span>&lt;&gt;(user, headers);</span><br><span class="line">     <span class="comment">//我很想知道这里的httpEneity是什么结构，这个结构同时包含User和HttpHeaders</span></span><br><span class="line"></span><br><span class="line">     ResponseEntity&lt;String&gt; response = restTemplate.postForEntity(url, httpEntity, String.class);</span><br><span class="line">     System.out.println(<span class="string">&quot;result:&quot;</span> + response.getBody());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="comment">//使用JSONObject作为参数（JSON提交）</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postForEntity3</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post/RequestBody&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">JSONObject</span> <span class="variable">object</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">    object.put(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line">    object.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;张三&quot;</span>);</span><br><span class="line"></span><br><span class="line">    ResponseEntity&lt;String&gt; response = restTemplate.postForEntity(url, object, String.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;result:&quot;</span> + response.getBody());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="exchange"><a href="#exchange" class="headerlink" title="exchange"></a>exchange</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">exchange1</span> <span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/post/RequestBody&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">HttpHeaders</span> <span class="variable">headers</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpHeaders</span>();</span><br><span class="line">    headers.setContentType(MediaType.APPLICATION_JSON);</span><br><span class="line">    LinkedMultiValueMap&lt;String, Object&gt; paramMap = <span class="keyword">new</span> <span class="title class_">LinkedMultiValueMap</span>&lt;&gt;();</span><br><span class="line">    paramMap.add(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line"></span><br><span class="line">    HttpEntity&lt;MultiValueMap&lt;String, Object&gt;&gt; httpEntity = <span class="keyword">new</span> <span class="title class_">HttpEntity</span>&lt;&gt;(paramMap, headers);</span><br><span class="line">    ResponseEntity&lt;String&gt; response = restTemplate.exchange(url, HttpMethod.POST, httpEntity, String.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;==================&quot;</span>);</span><br><span class="line">    System.out.println(response.getBody());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="getForObject"><a href="#getForObject" class="headerlink" title="getForObject"></a>getForObject</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getForObject</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/get/RequestParam?id=&#123;id&#125;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    HashMap&lt;String, Object&gt; paramMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    paramMap.put(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> restTemplate.getForObject(url, String.class, paramMap);</span><br><span class="line">    System.out.println(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getForEntity</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;http://127.0.0.1:8998/test/get&quot;</span>;</span><br><span class="line"></span><br><span class="line">    HashMap&lt;String, Object&gt; paramMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    paramMap.put(<span class="string">&quot;id&quot;</span>,<span class="string">&quot;123&quot;</span>);</span><br><span class="line"></span><br><span class="line">    ResponseEntity&lt;String&gt; response = restTemplate.getForEntity(url, String.class, paramMap);</span><br><span class="line">    System.out.println(response.getBody());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h2><h2 id="接受Controller中-RequestBody和-RequestParam"><a href="#接受Controller中-RequestBody和-RequestParam" class="headerlink" title="接受Controller中@RequestBody和@RequestParam"></a>接受Controller中@RequestBody和@RequestParam</h2><p>这里我写了五个个</p>
-<ul>
-<li>四个请求：get请求和post按接收的注解不同分为@RequestBody和@RequestParam</li>
-<li>一个返回类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OptResult</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> -<span class="number">6899059737730837772L</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="string">&quot;1&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String msg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/post/RequestBody&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="keyword">public</span> OptResult <span class="title function_">postForObject2</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String, Object&gt; paramMap)</span> &#123;</span><br><span class="line">    <span class="type">OptResult</span> <span class="variable">optResult</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OptResult</span>();</span><br><span class="line">    optResult.setMsg(paramMap.toString());</span><br><span class="line">    optResult.setResult(<span class="string">&quot;1 == POST&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> optResult;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/post/RequestParam&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="keyword">public</span> OptResult <span class="title function_">postForObject1</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String, Object&gt; paramMap)</span> &#123;</span><br><span class="line">    <span class="type">OptResult</span> <span class="variable">optResult</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OptResult</span>();</span><br><span class="line">    optResult.setMsg(paramMap.toString());</span><br><span class="line">    optResult.setResult(<span class="string">&quot;1 == POST&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> optResult;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/get/RequestBody&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> OptResult <span class="title function_">getForObject2</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String,Object&gt; paramMap)</span> &#123;</span><br><span class="line">    <span class="type">OptResult</span> <span class="variable">optResult</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OptResult</span>();</span><br><span class="line">    optResult.setMsg(paramMap.toString());</span><br><span class="line">    optResult.setResult(<span class="string">&quot;1 == GET&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> optResult;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/get/RequestParam&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> OptResult <span class="title function_">getForObject1</span><span class="params">(<span class="meta">@RequestParam</span> Map&lt;String,Object&gt; paramMap)</span> &#123;</span><br><span class="line">    <span class="type">OptResult</span> <span class="variable">optResult</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OptResult</span>();</span><br><span class="line">    optResult.setMsg(paramMap.toString());</span><br><span class="line">    optResult.setResult(<span class="string">&quot;1 == GET&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> optResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="RequestBody"><a href="#RequestBody" class="headerlink" title="@RequestBody"></a>@RequestBody</h3><blockquote>
-<p>@RequestBody主要用来接收前端传递给后端的json字符串中的数据的(请求体中的数据的)；GET方式无请求体，所以使用<br>@RequestBody接收数据时，前端不能使用GET方式提交数据，而是用POST方式进行提交。在后端的同一个接收方法里，<br>@RequestBody与@RequestParam()可以同时使用，@RequestBody最多只能有一个，而@RequestParam()可以有多个、</p>
-</blockquote>
-<blockquote>
-<p>@RequestBody接收的参数是来自爱requestBody中，即<strong>请求体</strong>。一般用于处理非<code>Content-Type:application/x-www-form-urlencoded</code>编码格式的数据，比如:<code>application/json</code>、<code>application/xml</code>等类型的数据。</p>
-</blockquote>
-<p>GET请求中，通过HttpEntity传递的参数，必须要在请求头中声明数据的类型Content-Type，SpringMVC通过使用HandlerAdapter配置来解析HttpEntity中的数据，然后绑定到响应的bean上。</p>
-<p>如果前端向后端传递的是非实体类对象，后端也可以使用 @RequestBody 注解，那就用<code>List&lt;Map&lt;String,String&gt;&gt;</code>来接收</p>
-<h3 id="RequestParam"><a href="#RequestParam" class="headerlink" title="@RequestParam"></a>@RequestParam</h3><p>用来处理<code>Content-Type</code>：为<code>application/x-www-form-urlencoded</code>编码的内容。（Http协议中，如果不指定<code>Content-Type</code>，则默认传递的参数就是<code>application/x-www-form-urlencoded</code>类型）</p>
-<p>POST类型和GET类型都可以使用@RequestParam注解来接收参数</p>
-<p>@RequestParam注解有三个参数</p>
-<ul>
-<li>required：表示是否必须，默认为true，必须。</li>
-<li>defaultValue：可设置请求参数的默认值，如果设置了该值，required&#x3D;true将失效，自动为false，如果没有传该参数，就使用默认值。</li>
-<li>value：为接收url的参数名（相当于key值）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下两种写法效果一模一样</span></span><br><span class="line"><span class="meta">@RequestParam(&quot;&quot;)</span> 或 <span class="meta">@RequestParam(value=&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//当配置多个属性的时候</span></span><br><span class="line"><span class="meta">@RequestParam(value=&quot;&quot;,required=true,defaultValue=&quot;&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果使用下面这种方式接值，那么前端传过来的参数名称就要和inputStr一样，这里才能接收到</span></span><br><span class="line"><span class="meta">@RequestParam</span> String inputStr</span><br><span class="line"></span><br><span class="line"><span class="comment">//但是如果加上value属性的话，那么前端传过来的参数名称就要和value属性中的一致才能接收到</span></span><br><span class="line"><span class="meta">@RequestParam(value=&quot;aa&quot;)</span> String inputStr</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果加上required属性，当required=true就是必须要传参值过来，当required=false表示不传的话，会给参数赋值为null</span></span><br><span class="line"><span class="meta">@RequestParam(value=&quot;aa&quot;, required=true)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//有一种特殊情况是参数为int类型时，设置required=false后参数不传值得话会给int类型参数赋值为null，而int是基本数据类型不能赋值</span></span><br><span class="line"><span class="meta">@RequestParam(value=&quot;inptInt&quot;,required=false)</span> <span class="type">int</span> inputInt</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -252,132 +200,27 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术(23上)</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java核心基础</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/03/23/2023/03/2023-03-23/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2023/03/26/2023/03/2023-03-26/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          理解一张图，SQL 语言多表连接不再有问题
-        
-      </div>
-    </a>
   
   
-    <a href="/2023/03/13/2023/03/2023-03-13/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">实践理解ClassLoader.java与Launcher.class</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#POST%E8%AF%B7%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">POST请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#postForObject"><span class="toc-number">1.1.</span> <span class="toc-text">postForObject</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#postForEntity"><span class="toc-number">1.2.</span> <span class="toc-text">postForEntity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exchange"><span class="toc-number">1.3.</span> <span class="toc-text">exchange</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#getForObject"><span class="toc-number">1.4.</span> <span class="toc-text">getForObject</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get%E8%AF%B7%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">Get请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97Controller%E4%B8%AD-RequestBody%E5%92%8C-RequestParam"><span class="toc-number">3.</span> <span class="toc-text">接受Controller中@RequestBody和@RequestParam</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestBody"><span class="toc-number">3.1.</span> <span class="toc-text">@RequestBody</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RequestParam"><span class="toc-number">3.2.</span> <span class="toc-text">@RequestParam</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -405,9 +248,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

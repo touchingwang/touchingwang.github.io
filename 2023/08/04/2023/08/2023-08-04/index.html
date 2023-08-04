@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Maven手敲复习/学习文档 | Hexo</title>
+  <title>熟练使用这些，企业中不再怕Git | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Maven">
+  <meta name="description" content="Git手敲复习&#x2F;学习文档">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maven手敲复习&#x2F;学习文档">
-<meta property="og:url" content="http://example.com/2023/08/01/2023/08/2023-08-02/index.html">
+<meta property="og:title" content="熟练使用这些，企业中不再怕Git">
+<meta property="og:url" content="http://example.com/2023/08/04/2023/08/2023-08-04/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Maven">
+<meta property="og:description" content="Git手敲复习&#x2F;学习文档">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-07-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-03T06:19:02.871Z">
+<meta property="og:image" content="https://s1.ax1x.com/2023/08/04/pPF78e0.jpg">
+<meta property="article:published_time" content="2023-08-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-04T07:02:02.720Z">
 <meta property="article:author" content="touchingwang">
-<meta property="article:tag" content="微服务核心">
+<meta property="article:tag" content="技术(23下)">
+<meta property="article:tag" content="微服务生态">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/08/04/pPF78e0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -67,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 49
+			总文章数 50
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -166,109 +169,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2023/08/2023-08-02" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2023/08/2023-08-04" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Maven手敲复习/学习文档
+      熟练使用这些，企业中不再怕Git
     </h1>
   
 
         
-        <a href="/2023/08/01/2023/08/2023-08-02/" class="archive-article-date">
-  	<time datetime="2023-07-31T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-01</time>
+        <a href="/2023/08/04/2023/08/2023-08-04/" class="archive-article-date">
+  	<time datetime="2023-08-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-08-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一节-为什么要学习Maven？"><a href="#第一节-为什么要学习Maven？" class="headerlink" title="第一节 为什么要学习Maven？"></a>第一节 为什么要学习Maven？</h2><h3 id="1、Maven-作为依赖管理工具"><a href="#1、Maven-作为依赖管理工具" class="headerlink" title="1、Maven 作为依赖管理工具"></a>1、Maven 作为依赖管理工具</h3><h4 id="jar-包的规模"><a href="#jar-包的规模" class="headerlink" title="jar 包的规模"></a>jar 包的规模</h4><p>随着我们使用越来越多的框架，或者框架封装程度越来越高，项目中使用的<code>jar</code>包也越来越多。项目中，一个模块里面用到上百个<code>jar</code>包是非常正常的。</p>
+        <div align="center">
+<img src="https://s1.ax1x.com/2023/08/04/pPF78e0.jpg" width="32%" margin="auto">
+</div>
+
 <span id="more"></span>
+<h1 id="一、版本控制概要"><a href="#一、版本控制概要" class="headerlink" title="一、版本控制概要"></a>一、版本控制概要</h1><h2 id="1-1、什么是版本控制"><a href="#1-1、什么是版本控制" class="headerlink" title="1.1、什么是版本控制"></a>1.1、什么是版本控制</h2><p>版本控制<code>(Revision control)</code>是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
+<ul>
+<li>实现跨区域多人协作开发</li>
+<li>追踪和记载一个或者多个文件的历史记录</li>
+<li>组织和保护你的源代码和文档</li>
+<li>统计工作量</li>
+<li>并行开发、提高开发效率</li>
+<li>跟踪记录整个软件的开发过程</li>
+<li>减轻开发人员的负担，节省时间，同时降低人为错误</li>
+</ul>
+<p><strong>简单说就是用于管理多人协作开发项目的技术</strong></p>
+<p>没有进行版本控制或者版本控制本身缺乏正确的流程管理，在软件开发过程中将会引入很多问题，如软件代码的一致性、软件内容的冗余、软件过程的事物性、软件开发过程中的并发性、软件源代码的安全性，以及软件的整合等问题。</p>
+<h2 id="1-2、常用术语"><a href="#1-2、常用术语" class="headerlink" title="1.2、常用术语"></a>1.2、常用术语</h2><h3 id="1-仓库-Repository"><a href="#1-仓库-Repository" class="headerlink" title="1. 仓库(Repository)"></a>1. 仓库(Repository)</h3><p>受版本控制的所有文件修订历史的共享数据库</p>
+<h3 id="2-工作空间-Workspace"><a href="#2-工作空间-Workspace" class="headerlink" title="2. 工作空间(Workspace)"></a>2. 工作空间(Workspace)</h3><p>本地硬盘或<code>Unix</code>用户账号上编辑的文件副本</p>
+<h3 id="3-工作树-x2F-区-Working-tree"><a href="#3-工作树-x2F-区-Working-tree" class="headerlink" title="3. 工作树&#x2F;区(Working tree)"></a>3. 工作树&#x2F;区(Working tree)</h3><p>工作区中包含了仓库的工作文件。您可以修改的内容和提交更改作为新的提交到仓库。</p>
+<h3 id="4-暂存区-Staging-area"><a href="#4-暂存区-Staging-area" class="headerlink" title="4. 暂存区(Staging area)"></a>4. 暂存区(Staging area)</h3><p>暂存区是工作区用来提交更改<code>(commit)</code>前可以暂存工作区的变化。</p>
+<h2 id="1-3、版本控制分类"><a href="#1-3、版本控制分类" class="headerlink" title="1.3、版本控制分类"></a>1.3、版本控制分类</h2><h3 id="1-3-1、本地版本控制"><a href="#1-3-1、本地版本控制" class="headerlink" title="1.3.1、本地版本控制"></a>1.3.1、本地版本控制</h3><p>记录文件每次的更新，可以对每个版本做一个快照，或是记录补丁文件，适合个人用，如<code>RCS</code>。</p>
+<h3 id="1-3-2、集中版本控制"><a href="#1-3-2、集中版本控制" class="headerlink" title="1.3.2、集中版本控制"></a>1.3.2、集中版本控制</h3><p>所有的版本数据都保存在服务器上，协同开发者从服务器上同步更新或上传自己的修改</p>
+<p>所有的版本数据都存在服务器上，<strong>用户的本地只有自己以前所同步的版本</strong>，如果不联网的话，用户就看不到历史版本，也无法切换版本验证问题，或在不同分支工作。而且，所有数据都保存在单一的服务器上，有很大的风险这个服务器会损坏，这样就会丢失所有的数据，当然可以定期备份。代表产品：SVN、CVS、VSS</p>
+<h3 id="1-3-3、分布式版本控制"><a href="#1-3-3、分布式版本控制" class="headerlink" title="1.3.3、分布式版本控制"></a>1.3.3、分布式版本控制</h3><p>所有版本信息仓库全部同步到本地的每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，只需在联网时<code>push</code>到相应的服务器或其他用户那里。由于每个用户那里保存的都是所有的版本数据，只要有一个用户的设备没有问题就可以恢复所有的数据，但这增加了本地存储空间的占用。</p>
+<h2 id="1-4、Git与SVN最主要区别"><a href="#1-4、Git与SVN最主要区别" class="headerlink" title="1.4、Git与SVN最主要区别"></a>1.4、Git与SVN最主要区别</h2><p>SVN是集中式版本控制系统，版本库是集中放在中央服务器的，而工作的时候，用的都是自己的电脑，所以首先要从中央服务器得到最新的版本，然后工作，完成工作后，需要把自己做完的活推送到中央服务器。集中式版本控制系统是必须联网才能工作，对网络带宽要求较高。</p>
+<p>Git是分布式版本控制系统，没有中央服务器，每个人的电脑就是一个完整的版本库，工作的时候不需要联网了，因为版本都在自己电脑上。协同的方法是这样的：比如说自己在电脑上改了文件A，其他人也在电脑上改了文件A，这时，你们两之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。</p>
+<h1 id="二、Git理论基础"><a href="#二、Git理论基础" class="headerlink" title="二、Git理论基础"></a>二、Git理论基础</h1><p>Git本地有三个工作区域：工作目录（Working Directory）、暂存区(Stage&#x2F;Index)、资源库(Repository或Git Directory)。如果在加上远程的git仓库(Remote Directory)就可以分为四个工作区域。</p>
+<ul>
+<li>Workspace：工作区，就是你平时存放项目代码的地方</li>
+<li>Index &#x2F; Stage：暂存区，用于临时存放你的改动，事实上它只是一个文件，保存即将提交到文件列表信息。<ul>
+<li>暂存区的文</li>
+</ul>
+</li>
+<li>Repository：仓库区（或本地仓库），就是安全存放数据的位置，这里面有你提交到所有版本的数据。其中HEAD指向最新放入仓库的版本</li>
+<li>Remote：远程仓库，托管代码的服务器，可以简单的认为是你项目组中的一台电脑用于远程数据交换</li>
+</ul>
+<h1 id="三、Git操作"><a href="#三、Git操作" class="headerlink" title="三、Git操作"></a>三、Git操作</h1><p>文件从工作区到暂存区到本地仓库到远程仓库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 该命令用于获取当前Git存储库的概述。它向您显示项目中已修改的文件(本地仓库中已有文件)、已设置且准备提交的文件(本地仓库中没有的文件)以及未跟踪的文件(本地仓库中没有的文件)。</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将工作区新增/修改的文件设为跟踪状态；</span></span><br><span class="line">git add a.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将所有已设置(add)且准备提交的文件修改为未跟踪的文件</span></span><br><span class="line">git <span class="built_in">rm</span> --cached a.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 单行显示提交记录</span></span><br><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看提交分支的信息(简单)</span></span><br><span class="line">git cat-file -p &lt;版本号&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 已提交中的文件被修改或误删除后，执行命令，将恢复这些文件到上次提交的状态</span></span><br><span class="line">git restore a.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将所有已设置(add)且准备提交的文件修改为未跟踪的文件</span></span><br><span class="line">git restore --stage b.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 假设你想将文件恢复到特定提交时的状态。要做到这一点，你可以使用以下命令：</span></span><br><span class="line">git restore --<span class="built_in">source</span>=&lt;版本号&gt; a.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果你想恢复已设置且准备提交的文件，可以使用以下命令</span></span><br><span class="line">git restore --worktree b.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 该命令是一种用于撤销或恢复Git仓库中所做更改的命令。它用于将当前分支移动到特定提交，使其成为分支的新HEAD。这可以用于将仓库重置为先前的状态或丢弃上次提交依赖所做的更改。</span></span><br><span class="line"><span class="comment"># (Hard):该模式是最严格的一种，它将分支的HEAD重置为以前的提交，在该提交之后丢弃所有已做出的更改。当你想要丢弃对文件所做出的某些更改或从头开始时，该模式很有用。</span></span><br><span class="line"><span class="comment"># 缺点1是只能用于回滚工作区的文件，并不能用于本地仓库和远程仓库提交，因为上次提交的版本还是存在的。</span></span><br><span class="line"><span class="comment"># 缺点2只能重置本地仓库的提交,无法重置远程仓库的提交。无法重置为某个版本后推到远程</span></span><br><span class="line">git reset --hard HEAD ~1</span><br><span class="line">git reset --hard 5f2ab1a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 撤销提交，把指定的提交的所有修改回滚，并同时生成一个新的提交。这意味着现有的分支将更新为一个新的提交，该提交撤销了以前提交中所做的更改，使代码库回到以前的状态。</span></span><br><span class="line"><span class="comment"># 与reset命令不同，revert命令创建一个新的提交，保留了项目的完整历史记录。这是协作项目中至关重要的功能，因为它允许我们撤销更改而不影响正在处理同一代码库的其他开发人员。</span></span><br><span class="line">git revert 516c312</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>比如下面的例子，我们只用到 <code>SpringBoot</code>,<code>SpringCloud</code>框架中的三个功能：</p>
-</blockquote>
-<ul>
-<li>Nacos 服务注册发现</li>
-<li>Web 框架环境</li>
-<li>图模板技术 Thymeleaf</li>
-</ul>
-<h4 id="jar-包的来源"><a href="#jar-包的来源" class="headerlink" title="jar 包的来源"></a>jar 包的来源</h4><ul>
-<li>这个<code>jar</code>包所属技术的官网。官网通常是英文界面，网站的结构又不尽相同，甚至找到下载链接还发现需要通过特殊的工具下载。</li>
-<li>第三方网站提供下载。问题是不规范，在使用过程中会出现各种问题。<ul>
-<li><code>jar</code>包的名称</li>
-<li><code>jar</code>包的版本</li>
-<li><code>jar</code>包内的具体细节</li>
-</ul>
-</li>
-<li>而使用<code>Maven</code>后，依赖对应的<code>jar</code>包能够自动下载，方便、快捷又规范。</li>
-</ul>
-<h3 id="jar-包之间的依赖关系"><a href="#jar-包之间的依赖关系" class="headerlink" title="jar 包之间的依赖关系"></a>jar 包之间的依赖关系</h3><p>框架中使用的<code>jar</code>包，不仅数量庞大，而且彼此之间存在错综复杂的依赖关系。依赖关系的复杂程度，已经上升到了完全不能靠人力手动解决的程度。另外，<code>jar</code>包之间有可能产生冲突。进一步增加了我们在<code>jar</code>包使用过程中的难度。</p>
-<h3 id="2、Maven-作为构建管理工具"><a href="#2、Maven-作为构建管理工具" class="headerlink" title="2、Maven 作为构建管理工具"></a>2、Maven 作为构建管理工具</h3><h4 id="你没有注意过的构建"><a href="#你没有注意过的构建" class="headerlink" title="你没有注意过的构建"></a>你没有注意过的构建</h4><p>你可以不使用<code>Maven</code>，但是构建必须要做。当我们使用<code>IDEA</code>进行开发时，构建是<code>IDEA</code>替我们做的。</p>
-<h4 id="脱离IDE环境仍需构建"><a href="#脱离IDE环境仍需构建" class="headerlink" title="脱离IDE环境仍需构建"></a>脱离IDE环境仍需构建</h4><h3 id="3、结果"><a href="#3、结果" class="headerlink" title="3、结果"></a>3、结果</h3><ul>
-<li>管理模块庞大的<code>jar</code>包，需要专门工具。</li>
-<li>脱离 IDE 环境执行构建操作，需要专门工具。</li>
-</ul>
-<h2 id="第二节-什么是-Maven"><a href="#第二节-什么是-Maven" class="headerlink" title="第二节 什么是 Maven?"></a>第二节 什么是 Maven?</h2><h3 id="1、构建"><a href="#1、构建" class="headerlink" title="1、构建"></a>1、构建</h3><p><code>Maven</code>是<code>Apache</code>软件基金会组织维护的一款专门为<code>Java</code>项目提供构建和依赖管理支持的工具。</p>
-<ul>
-<li>原材料<ul>
-<li><code>Java</code>源代码</li>
-<li>基于<code>HTML</code>的<code>Thymeleaf</code>文件</li>
-<li>图片</li>
-<li>配置文件</li>
-<li>…..</li>
-</ul>
-</li>
-<li>产品<ul>
-<li>一个可以在服务器上运行的项目</li>
-</ul>
-</li>
-</ul>
-<p>构建过程包含的主要的环节：</p>
-<ul>
-<li>清理：删除上一次构建的结果，为下一次构建做好准备</li>
-<li>编译：<code>Java</code>源程序编译成<code>*.class</code>字节码文件</li>
-<li>测试：运行提前准备好的测试程序</li>
-<li>报告：针对刚才测试的结果生成一个全面的信息</li>
-<li>打包<ul>
-<li><code>Java</code>工程：<code>jar</code>包</li>
-<li><code>Web工程</code>：<code>war</code>包</li>
-</ul>
-</li>
-<li>安装：把一个<code>Maven</code>工程经过打包操作生成的<code>jar</code>包或<code>war</code>包存入<code>Maven</code>仓库</li>
-<li>部署：<ul>
-<li>部署<code>jar</code>包：把一个<code>jar</code>包部署到<code>Nexus</code>私服服务器上。</li>
-<li>部署<code>war</code>包：借助相关<code>Maven</code>插件，将<code>war</code>包部署到<code>Tomcat</code>服务器上</li>
-</ul>
-</li>
-</ul>
-<h2 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2. 环境变量"></a>2. 环境变量</h2><h3 id="1、检查JAVA-HOME配置是否正确"><a href="#1、检查JAVA-HOME配置是否正确" class="headerlink" title="1、检查JAVA_HOME配置是否正确"></a>1、检查JAVA_HOME配置是否正确</h3><p><code>Maven</code>是一个用<code>Java</code>语言开发的程序，它必须基于<code>JDK</code>来运行，需要通过<code>JAVA_HOME</code>来找到<code>JDK</code>的安装位置。</p>
-<h3 id="2、Maven中的坐标"><a href="#2、Maven中的坐标" class="headerlink" title="2、Maven中的坐标"></a>2、Maven中的坐标</h3><p>使用三个<code>向量</code>在<code>Maven的仓库</code>中<code>唯一</code>的定位到一个<code>jar</code>包。</p>
-<ul>
-<li><code>groupId</code>：公司或组织的<code>id</code></li>
-<li><code>artifactId</code>：一个项目或者是项目中的一个模块的<code>id</code></li>
-<li><code>version</code>：版本号</li>
-</ul>
-<h3 id="3、坐标和仓库中-jar-包的存储路径之间的对应关系"><a href="#3、坐标和仓库中-jar-包的存储路径之间的对应关系" class="headerlink" title="3、坐标和仓库中 jar 包的存储路径之间的对应关系"></a>3、坐标和仓库中 jar 包的存储路径之间的对应关系</h3><p>坐标：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.servlet<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>servlet-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>上面坐标对应的<code>jar</code>包在<code>Maven</code>本地仓库中的位置：</p>
-<blockquote>
-<p>Maven本地仓库根目录\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar</p>
-</blockquote>
-<p>一定要学会根据坐标到本地仓库中找到对应的<code>jar</code>包。</p>
-<h2 id="3-创建一个Maven工程"><a href="#3-创建一个Maven工程" class="headerlink" title="3. 创建一个Maven工程"></a>3. 创建一个Maven工程</h2><h3 id="1-创建目录作为后面操作的工作空间"><a href="#1-创建目录作为后面操作的工作空间" class="headerlink" title="1. 创建目录作为后面操作的工作空间"></a>1. 创建目录作为后面操作的工作空间</h3><p>例如：D:\maven-workspace\space201026</p>
-<p>此时我们呢已经有了三个目录，分别是：</p>
-<ul>
-<li>Maven 核心程序：中军大帐</li>
-<li>Maven 本地仓库：兵营</li>
-<li>本地工作空间：战场</li>
-</ul>
-<h3 id="2-在工作空间目录下打开命令行窗口"><a href="#2-在工作空间目录下打开命令行窗口" class="headerlink" title="2. 在工作空间目录下打开命令行窗口"></a>2. 在工作空间目录下打开命令行窗口</h3><h3 id="3-使用命令行生成Maven工程"><a href="#3-使用命令行生成Maven工程" class="headerlink" title="3. 使用命令行生成Maven工程"></a>3. 使用命令行生成Maven工程</h3><p>运行<code>mvn archetype:generate</code>命令</p>
+
+
+
+
+
+
 
       
     </div>
@@ -280,7 +247,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微服务核心</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术(23下)</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微服务生态</a>
         		</li>
       		
 		</ul>
@@ -336,7 +307,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/08/01/2023/08/2023-08-02/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/08/04/2023/08/2023-08-04/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -350,18 +321,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/08/01/2023/08/2023-08-01/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/12/07/2034/2034-12-07-%E7%BD%AE%E9%A1%B6/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Git手敲复习/学习文档
+          置顶|
         
       </div>
     </a>
   
   
-    <a href="/2023/07/31/2023/07/2023-07-31/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">复盘丨Monthly Review-6月</div>
+    <a href="/2023/08/03/2023/08/2023-08-03/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git如何切换分支？底层原理是什么？</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -388,7 +359,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0Maven%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">第一节 为什么要学习Maven？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Maven-%E4%BD%9C%E4%B8%BA%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.</span> <span class="toc-text">1、Maven 作为依赖管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#jar-%E5%8C%85%E7%9A%84%E8%A7%84%E6%A8%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">jar 包的规模</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jar-%E5%8C%85%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">jar 包的来源</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jar-%E5%8C%85%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">jar 包之间的依赖关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Maven-%E4%BD%9C%E4%B8%BA%E6%9E%84%E5%BB%BA%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">1.3.</span> <span class="toc-text">2、Maven 作为构建管理工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%A0%E6%B2%A1%E6%9C%89%E6%B3%A8%E6%84%8F%E8%BF%87%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">你没有注意过的构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%84%B1%E7%A6%BBIDE%E7%8E%AF%E5%A2%83%E4%BB%8D%E9%9C%80%E6%9E%84%E5%BB%BA"><span class="toc-number">1.3.2.</span> <span class="toc-text">脱离IDE环境仍需构建</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BB%93%E6%9E%9C"><span class="toc-number">1.4.</span> <span class="toc-text">3、结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E4%BB%80%E4%B9%88%E6%98%AF-Maven"><span class="toc-number">2.</span> <span class="toc-text">第二节 什么是 Maven?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%9E%84%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">1、构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">2. 环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%A3%80%E6%9F%A5JAVA-HOME%E9%85%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE"><span class="toc-number">3.1.</span> <span class="toc-text">1、检查JAVA_HOME配置是否正确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Maven%E4%B8%AD%E7%9A%84%E5%9D%90%E6%A0%87"><span class="toc-number">3.2.</span> <span class="toc-text">2、Maven中的坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%9D%90%E6%A0%87%E5%92%8C%E4%BB%93%E5%BA%93%E4%B8%AD-jar-%E5%8C%85%E7%9A%84%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB"><span class="toc-number">3.3.</span> <span class="toc-text">3、坐标和仓库中 jar 包的存储路径之间的对应关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAMaven%E5%B7%A5%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">3. 创建一个Maven工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%E4%BD%9C%E4%B8%BA%E5%90%8E%E9%9D%A2%E6%93%8D%E4%BD%9C%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4"><span class="toc-number">4.1.</span> <span class="toc-text">1. 创建目录作为后面操作的工作空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9C%A8%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3"><span class="toc-number">4.2.</span> <span class="toc-text">2. 在工作空间目录下打开命令行窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%94%9F%E6%88%90Maven%E5%B7%A5%E7%A8%8B"><span class="toc-number">4.3.</span> <span class="toc-text">3. 使用命令行生成Maven工程</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E6%A6%82%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">一、版本控制概要</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.1.</span> <span class="toc-text">1.1、什么是版本控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E3%80%81%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD"><span class="toc-number">1.2.</span> <span class="toc-text">1.2、常用术语</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%93%E5%BA%93-Repository"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 仓库(Repository)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4-Workspace"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 工作空间(Workspace)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B7%A5%E4%BD%9C%E6%A0%91-x2F-%E5%8C%BA-Working-tree"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 工作树&#x2F;区(Working tree)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9A%82%E5%AD%98%E5%8C%BA-Staging-area"><span class="toc-number">1.2.4.</span> <span class="toc-text">4. 暂存区(Staging area)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3%E3%80%81%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%88%86%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">1.3、版本控制分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1%E3%80%81%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.3.1、本地版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2%E3%80%81%E9%9B%86%E4%B8%AD%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">1.3.2、集中版本控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3%E3%80%81%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text">1.3.3、分布式版本控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4%E3%80%81Git%E4%B8%8ESVN%E6%9C%80%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">1.4、Git与SVN最主要区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Git%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">二、Git理论基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Git%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">三、Git操作</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -524,15 +495,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微服务生态</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java核心基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,6 +512,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术(23下)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微服务生态</a>
               </li>
              
               <li class="article-tag-list-item">
