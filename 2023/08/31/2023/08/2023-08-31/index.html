@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s1.ax1x.com/2023/08/30/pPdrtYD.jpg">
 <meta property="article:published_time" content="2023-08-30T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T07:47:28.593Z">
+<meta property="article:modified_time" content="2023-09-21T09:17:18.243Z">
 <meta property="article:author" content="touchingwang">
 <meta property="article:tag" content="微服务核心">
 <meta property="article:tag" content="技术(23下)">
@@ -70,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 56
+			总文章数 58
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -525,7 +525,7 @@
 <li>动态代理分为JDK动态代理和cglib动态代理</li>
 <li>当目标类有接口的情况使用JDK动态代理和cglib动态代理，没有接口时只能使用cglib动态代理</li>
 <li>JDK动态代理动态生成的代理类会在<code>com.sun.proxy</code>包下，类名为$proxy1，和目标类实现相同的接口</li>
-<li>cglib动态dialing生成的代理类会和目标在相同的包下，会继承目标类</li>
+<li>cglib动态代理生成的代理类会和目标在相同的包下，会继承目标类</li>
 <li>动态代理(InvocationHandler)：JDK原生的实现方式，需要被代理的目标类必须实现接口。因为这个技术要求<strong>代理对象和目标对象实现相同的接口</strong></li>
 <li>cglib：通过<strong>继承被代理的目标类</strong>实现代理，所以不需要目标类实现接口。</li>
 <li>AspectJ：是AOP思想的一种实现。本质上是静态代理，<strong>将代理逻辑织入被代理的目标类变异得到的字节码文件</strong>，所以最终效果是动态的。weaver就是织入器。Spring只是借用了AspectJ中的注解。</li>
@@ -621,7 +621,7 @@
 <h3 id="7-4、基于XML的声明式事务"><a href="#7-4、基于XML的声明式事务" class="headerlink" title="7.4、基于XML的声明式事务"></a>7.4、基于XML的声明式事务</h3><p>略</p>
 <h2 id="第八章-资源操作：Resources"><a href="#第八章-资源操作：Resources" class="headerlink" title="第八章 资源操作：Resources"></a>第八章 资源操作：Resources</h2><h3 id="8-1、Spring-Resources概述"><a href="#8-1、Spring-Resources概述" class="headerlink" title="8.1、Spring Resources概述"></a>8.1、Spring Resources概述</h3><p>Java的标准<code>java.net.URL</code>类和各种URL前缀的标准处理程序无法满足所有对low-level资源的访问，比如：没有标准化的URL实现可用于访问需要从类路径或相对于<code>ServletContext</code>获取的资源。并且缺少某些Spring所需要的功能，例如检测某资源是否存在等。而Spring的Resource声明了访问low-level资源的能力。</p>
 <h3 id="8-2、Resource接口"><a href="#8-2、Resource接口" class="headerlink" title="8.2、Resource接口"></a>8.2、Resource接口</h3><p>Spring的Resource接口位于<code>org.springframework.core.io</code>中。旨在成为一个更强大的接口，用于抽象对底层资源的访问。</p>
-<h3 id="8-3、Resource的实现类"><a href="#8-3、Resource的实现类" class="headerlink" title="8.3、Resource的实现类"></a>8.3、Resource的实现类</h3><p>Resource接口是Spring资源访问策略的抽象，它本身并不提供任何资源访问实现，具体的资源访问由该接口的实现类完成–每个实现类代表一种资源访问策略。Resource一版包括这些实现类：Url’Resource、ClassPathResource、FileSystemResource、ServletContextResource、InputStreamResource、ByteArrayResource</p>
+<h3 id="8-3、Resource的实现类"><a href="#8-3、Resource的实现类" class="headerlink" title="8.3、Resource的实现类"></a>8.3、Resource的实现类</h3><p>Resource接口是Spring资源访问策略的抽象，它本身并不提供任何资源访问实现，具体的资源访问由该接口的实现类完成–每个实现类代表一种资源访问策略。Resource一版包括这些实现类：UrlResource、ClassPathResource、FileSystemResource、ServletContextResource、InputStreamResource、ByteArrayResource</p>
 <h4 id="8-3-1、UrlResource访问网络资源"><a href="#8-3-1、UrlResource访问网络资源" class="headerlink" title="8.3.1、UrlResource访问网络资源"></a>8.3.1、UrlResource访问网络资源</h4><p>Resource的一个实现类，用来访问网络资源，它支持URL的绝对路径。<br>http:——该前缀用于访问基于HTTP协议的网络资源。<br>ftp:——该前缀用于访问基于FTP协议的网络资源<br>file:——该前缀用于从文件系统中读取资源</p>
 <h4 id="8-3-2、ClassPathResource访问类路径下资源"><a href="#8-3-2、ClassPathResource访问类路径下资源" class="headerlink" title="8.3.2、ClassPathResource访问类路径下资源"></a>8.3.2、ClassPathResource访问类路径下资源</h4><p>ClassPathResource用来访问类加载路径下的资源，相对于其他的Resource实现类，其主要优势是方便访问类加载路径里的资源，尤其对于Web应用，ClassPathResource可自动搜索位于 classes下的资源文件，无须使用绝对路径访问。</p>
 <p>实验：在类路径下创建文件atguigu.txt，使用ClassPathResource 访问</p>
@@ -746,7 +746,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/09/19/2023/09/2023-08-16/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/09/19/2023/09/2023-09-19/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -908,15 +908,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术(23上)</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -932,15 +932,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微服务核心</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术(23下)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
               <li class="article-tag-list-item">

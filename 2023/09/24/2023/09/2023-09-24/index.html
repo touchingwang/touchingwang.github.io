@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>springboot手敲复习/学习文档 | Hexo</title>
+  <title>开发遇见控制层类上添加@RefreshScope | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="springboot手敲复习&#x2F;学习文档">
+  <meta name="description" content="开发遇见控制层类上添加@RefreshScope">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springboot手敲复习&#x2F;学习文档">
-<meta property="og:url" content="http://example.com/2023/09/19/2023/09/2023-08-16/index.html">
+<meta property="og:title" content="开发遇见控制层类上添加@RefreshScope">
+<meta property="og:url" content="http://example.com/2023/09/24/2023/09/2023-09-24/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="springboot手敲复习&#x2F;学习文档">
+<meta property="og:description" content="开发遇见控制层类上添加@RefreshScope">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-09-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-21T08:28:10.122Z">
+<meta property="article:published_time" content="2023-09-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-27T08:12:45.076Z">
 <meta property="article:author" content="touchingwang">
 <meta property="article:tag" content="技术(23下)">
-<meta property="article:tag" content="微服务生态">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -68,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 56
+			总文章数 58
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -167,147 +166,112 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2023/09/2023-08-16" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2023/09/2023-09-24" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      springboot手敲复习/学习文档
+      开发遇见控制层类上添加@RefreshScope
     </h1>
   
 
         
-        <a href="/2023/09/19/2023/09/2023-08-16/" class="archive-article-date">
-  	<time datetime="2023-09-18T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-19</time>
+        <a href="/2023/09/24/2023/09/2023-09-24/" class="archive-article-date">
+  	<time datetime="2023-09-23T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-09-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>部分springboot手敲复习文档，由于springboot知识点比较杂，枯燥，笔记只记录了一部分。详细的可以参考网址雷丰阳老师笔记<code>https://www.yuque.com/leifengyang/springboot3</code></p>
+        <p>以下是我通过四篇文章了解到@RefreshScope的作用</p>
 <span id="more"></span>
-<h1 id="核心特性"><a href="#核心特性" class="headerlink" title="核心特性"></a>核心特性</h1><h2 id="1、快速入门"><a href="#1、快速入门" class="headerlink" title="1、快速入门"></a>1、快速入门</h2><h3 id="1、SpringBoot是什么"><a href="#1、SpringBoot是什么" class="headerlink" title="1、SpringBoot是什么"></a>1、SpringBoot是什么</h3><p>SpringBoot 帮我们简单、快速地创建一个独立的、生产级别的Spring应用(说明：SpringBoot底层是Spring)<br>大多数 SpringBoot 应用只需要编写少量配置即可快速整合 Spring 平台以及第三方技术<br><strong>特性：</strong></p>
+<h1 id="SpringCloud配置动态刷新-RefreshScope注解"><a href="#SpringCloud配置动态刷新-RefreshScope注解" class="headerlink" title="SpringCloud配置动态刷新@RefreshScope注解"></a>SpringCloud配置动态刷新@RefreshScope注解</h1><h2 id="一、-RefreshScope动态刷新原理"><a href="#一、-RefreshScope动态刷新原理" class="headerlink" title="一、@RefreshScope动态刷新原理"></a>一、@RefreshScope动态刷新原理</h2><p>在SpringIOC中，BeanScope(Bean的作用域)影响了Bean的管理方式。<br>Bean的作用域</p>
+<table>
+<thead>
+<tr>
+<th align="left">作用域</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">singleton（单例）</td>
+<td align="left">每一个Spring IoC容器都拥有唯一的一个实例对象（默认作用域）</td>
+</tr>
+<tr>
+<td align="left">prototype（原型）</td>
+<td align="left">一个Bean定义，任意多个对象</td>
+</tr>
+<tr>
+<td align="left">request</td>
+<td align="left">每一个HTTP请求都有自己的Bean实例（只在基于web的Spring ApplicationContext中可用）</td>
+</tr>
+<tr>
+<td align="left">session（会话）</td>
+<td align="left">一个Bean的作用域为HttpSession的生命周期（只有基于web的Spring ApplicationContext中可用）</td>
+</tr>
+<tr>
+<td align="left">global session(全局会话)</td>
+<td align="left">一个Bean的作用域为HttpSession的生命周期。通常用于门户网站场景（只有基于web的Spring ApplicationContext中可用）</td>
+</tr>
+</tbody></table>
+<p>例如创建Scope&#x3D;singleton的Bean时，IOC会保存实例在一个Map中，保证这个Bean在一个IOC上下文有且仅有一个实例。</p>
+<p>SpringCloud新增了一个自定义的作用域：refresh（可以理解为“动态刷新”)，同样用了一种独特的方式改变了 Bean 的管理方式，使得其可以通过外部化配置 (.properties) 的刷新，在应用不需要重启的情况下热加载新的外部化配置的值。<br>这个scope是如何做到热加载的呢？RefreshScope主要做了以下动作：</p>
 <ul>
-<li>快速创建独立Spring应用</li>
-<li>直接嵌入Tomcat、Jetty or Undertow（无须部署war包）<ul>
-<li>linux java tomcat mysql：war放到tomcat的webapps下</li>
-<li>jar：java环境；java -jar</li>
+<li>单独管理Bean生命周期<br>  创建Bean的时候如果是RefreshScope就缓存在一个专门管理的ScopeMap中，这样就可以管理Scope是Refresh的Bean的生命周期了（所以含RefreshScope的其实一个创建了两个bean）。</li>
+<li>重新创建BEan<br>  外部化配置刷新之后，会触发一个动作，这个动作将上面的ScopeMap中的Bean清空，这样这些Bean就会重新被IOC容器创建一次，使用最新的外部化配置的值注入类中，达到热加载新值的效果。</li>
 </ul>
-</li>
-<li><strong>重点</strong>：提供可选的stater，简化应用整合<ul>
-<li>场景启动器：web、json、邮件、oss（对象存储）、异步、定时任务、缓存…</li>
-<li>导包一堆，控制好版本。</li>
-<li>为每一种场景准备了一个依赖；web-starter。mybatis-starter</li>
-</ul>
-</li>
-<li><strong>重点：按需自动配置</strong>Spring以及第三方库<ul>
-<li>如果这些场景我要使用（生效）。这个场景的所有配置都会自动配置好</li>
-<li><strong>约定大于配置</strong>：每个场景都有很多默认配置。</li>
-<li>自定义：配置文件中修改几项就可以</li>
-</ul>
-</li>
-<li>提供生产级特性：如监控指标、健康检查、外部化配置等<ul>
-<li>监控指标、健康检查（k8s）、外部化配置</li>
-</ul>
-</li>
-<li>无代码生成，无xml<br>总结：简化开发，简化配置，简化整合，简化部署，简化监控，简化运维。</li>
-</ul>
-<h2 id="2、快速体验"><a href="#2、快速体验" class="headerlink" title="2、快速体验"></a>2、快速体验</h2><pre><code>场景：浏览器发送/hello请求，返回“Hello，Spring Boot3！”
-</code></pre>
-<h3 id="1、开发流程"><a href="#1、开发流程" class="headerlink" title="1、开发流程"></a>1、开发流程</h3><p><strong>创建maven项目</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--所有springboot项目都必须继承自spring-boot-starter-parent--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>导入场景启动器(依赖)</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--web开发的场景启动器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>主程序</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span><span class="comment">//这是一个SpringBoot应用</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainApplication</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		SpringApplication.run(MainApplication.class,args)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>编写controller</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloController</span>&#123;</span><br><span class="line">	<span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">hello</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;Hello,Spring Boot3!&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>测试</strong><br>默认启动访问：localhost:8080<br><strong>打包</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--SpringBoot应用打包插件--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>mvn clean package</code>把项目打成可执行的jar包<br><code>java -jar demo.java</code>启动项目</p>
-<h3 id="2、特性结合"><a href="#2、特性结合" class="headerlink" title="2、特性结合"></a>2、特性结合</h3><p><strong>简化整合</strong><br>导入相关的场景，拥有相关的功能。场景启动器<br>默认支持的所有场景：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters">https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.build-systems.starters</a></p>
+<p>spring cloud config或spring cloud alibaba nacos作为配置中心，其实现原理就是通过@RefreshScope来实现对象属性的动态更新。</p>
+<p>@RefreshScope 实现配置的动态刷新满足以下几个条件：</p>
 <ul>
-<li>官方提供的场景：命名为：<code>spring-boot-starter-*</code></li>
-<li>第三方提供场景：命名为：<code>*-spring-boot-starter</code><br>场景一导入，万物皆就绪<br><strong>简化开发</strong><br>无须编写任何配置，直接开发业务<br><strong>简化配置</strong><br><code>application.properties</code>:</li>
-<li>集中式管理配置。只需要修改这个文件就行。</li>
-<li>配置基本都有默认值</li>
-<li>能写的所有配置都在：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#appendix.application-properties">https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#appendix.application-properties</a><br><strong>简化部署</strong><br>打包为可执行的jar包<br>linux服务器上有java环境。<br><strong>简化运维</strong><br>修改配置（外部放一个application.properties文件）、监控、健康检查。</li>
-</ul>
-<h2 id="3、应用分析"><a href="#3、应用分析" class="headerlink" title="3、应用分析"></a>3、应用分析</h2><h3 id="1、依赖管理机制"><a href="#1、依赖管理机制" class="headerlink" title="1、依赖管理机制"></a>1、依赖管理机制</h3><p>思考：<br>1、为什么导入<code>starter-web</code>所有相关依赖都导入进来？</p>
-<ul>
-<li>开发什么环境，导入什么 <strong>场景启动器</strong></li>
-<li>maven依赖传递原则。A-B-C：A就拥有B和C</li>
-<li>导入 场景启动器。场景启动器 自动把这个场景的所有核心依赖全部导入进来<br>2、为什么版本号都不用写？</li>
-<li>每个boot项目都有一个父项目<code>spring-boot-starter-parent</code></li>
-<li>parent的父项目是<code>spring-boot-dependencies</code></li>
-<li>父项目<code>版本仲裁中心</code>，把所有常见的jar的依赖版本都声明好了。</li>
-<li>比如：<code>mysql-connector-j</code><br>3、自定义版本号</li>
-<li>利用maven的就近原则<ul>
-<li>直接在当前项目<code>properties</code>标签中声明父项目用的版本属性的key</li>
-<li>直接在 <strong>导入依赖的时候声明版本</strong><br>4、第三方的jar包</li>
-</ul>
+<li><p>@Scope注解</p>
 </li>
-<li>boot父项目没有管理的需要自行声明好<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.16<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2、自动配置机制"><a href="#2、自动配置机制" class="headerlink" title="2、自动配置机制"></a>2、自动配置机制</h3><p>初步理解<br>自动配置的Tomcat、SpringMVC等</p>
-<ul>
-<li>导入场景，容器中就会自动配置好这个场景的核心组件</li>
-<li>以前：DispatchServlet、ViewResolver、CharacterEncodingFilter…</li>
-<li>现在：自动配置好的这些组件</li>
-<li>验证：容器中有了什么组件，就具有什么功能<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">//java10： 局部变量类型的自动推断</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">ioc</span> <span class="operator">=</span> SpringApplication.run(MainApplication.class, args);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1、获取容器中所有组件的名字</span></span><br><span class="line">    String[] names = ioc.getBeanDefinitionNames();</span><br><span class="line">    <span class="comment">//2、挨个遍历：</span></span><br><span class="line">    <span class="comment">// dispatcherServlet、beanNameViewResolver、characterEncodingFilter、multipartResolver</span></span><br><span class="line">    <span class="comment">// SpringBoot把以前配置的核心组件现在都给我们自动配置好了。</span></span><br><span class="line">    <span class="keyword">for</span> (String name : names) &#123;</span><br><span class="line">        System.out.println(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-默认的包扫描规则</li>
-<li><code>@SpringBootApplication</code>标注的类就是主程序类</li>
-<li>SpringBoot只会扫描主程序所做的包及其下面的自爆，自动的component-scan功能</li>
-<li>自定义扫描路径<ul>
-<li>@SpringBootApplication(scanBasePackages&#x3D;”com.atguigu”)</li>
-<li>@ComponentScan(“com.atguigu”)直接指定扫描的路径<br>配置默认值</li>
-</ul>
+<li><p>@RefreshScope注解</p>
 </li>
-<li>配置文件的所有配置项是和某和类的对象值进行一一绑定的。</li>
-<li>绑定了配置文件中每一项值的类：属性类。</li>
-<li>比如：<ul>
-<li><code>ServerProperties</code>绑定了所有Tomcat服务器有关的配置</li>
-<li><code>MultiparProperties</code>绑定了所有文件上传相关的配置<br>总结：导入场景启动器、触发<code>spring-boot-autoconfigure</code>这个包的自动配置生效、容器中就会具有相关场景的功能</li>
-</ul>
+<li><p>RefreshScope类</p>
+</li>
+<li><p>GenericScope类</p>
+</li>
+<li><p>Scope接口</p>
+</li>
+<li><p>ContextRefresher类</p>
+<p>  @RefreshScope 能实现动态刷新全仰仗着@Scope 这个注解。</p>
 </li>
 </ul>
-<h2 id="4、核心技能"><a href="#4、核心技能" class="headerlink" title="4、核心技能"></a>4、核心技能</h2><h3 id="1、常用注解"><a href="#1、常用注解" class="headerlink" title="1、常用注解"></a>1、常用注解</h3><pre><code>SpringBoot摒弃XML配置方式，改为全注解驱动
-</code></pre>
-<p><strong>1.组件注册</strong><br>@Configuration、@SpringBootConfiguration<br>@Bean、@Scope<br>@Controller、@Service、@Repository、@Component<br>@Import<br>@ComponentScan<br>步骤：<br>1、@Configuration编写一个配置类<br>2、在配置类中，自定义方法给容器中注册组件。配置@Bean<br>3、或使用@Import导入第三方的组件<br><strong>2.条件注解</strong></p>
-<pre><code>如果注解指定的条件成立，则触发指定行为
-</code></pre>
-<p>@ConditionalOnXxx<br>@ConditionalOnClass：如果类路径中存在这个类，则触发指定行为<br>@ConditionalOnMissingClass：如果类路径中不存在这个类，则触发指定行为<br>@ConditionalOnBean：如果容器中存在这个Bean（组件），则触发指定行为<br>@ConditionalOnMissingBean：如果容器中不存在这个Bean（组件），则触发指定行为</p>
-<pre><code>场景：
-如果存在FastsqlException这个类，给容器中放一个Cat组件，名cat01，
-否则，就给容器中放一个Dog组件，名dog01
-如果系统中有dog01这个组件，就给容器中放一个User组件，名zhangsan
-否则，就放一个User，名叫lisi
-</code></pre>
-<p>@ConditionalOnBean(value&#x3D;组件类型，name&#x3D;组件名字)：判断容器中是否有这个类型的组件，并且名字是指定的值<br><strong>3.属性绑定</strong><br>@ConfigurationProperties：声明组件的属性和配置文件哪些前缀开始项进行绑定<br>@EnableConfigurationProperties：快速注册注解：</p>
-<ul>
-<li>场景：SpringBoot默认只扫描自己主程序所在的包。如果导入第三方包，即使组件上标注了@Component、@ConfigurationProperties注解，也没用。因为组件都扫描不进来，此时使用这个注解就可以快速进行属性绑定并把组件注册进容器<br>将容器中任意组件(Bean)的属性值和配置文件的配置项的值进行绑定</li>
-</ul>
-<ol>
-<li>给容器中注册组件（@Component、@Bean）</li>
-<li>使用@ConfigurationProperties声明组件和配置文件的哪些配置项进行绑定</li>
+<h3 id="1-Scope注解"><a href="#1-Scope注解" class="headerlink" title="1. @Scope注解"></a>1. @Scope注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Scope &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Alias for &#123;<span class="doctag">@link</span> #scopeName&#125;.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> #scopeName</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@AliasFor(&quot;scopeName&quot;)</span></span><br><span class="line">	String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * singleton 表示该bean是单例的。(默认)</span></span><br><span class="line"><span class="comment">	 * prototype 表示该bean是多例的，即每次使用该bean时都会新建一个对象。</span></span><br><span class="line"><span class="comment">	 * request 在一次http请求中，一个bean对应一个实例。</span></span><br><span class="line"><span class="comment">	 * session 在一个httpSession中，一个bean对应一个实例</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@AliasFor(&quot;value&quot;)</span></span><br><span class="line">	String <span class="title function_">scopeName</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">    * DEFAULT 不适用代理。(默认)</span></span><br><span class="line"><span class="comment">    * NO 不适用代理，等价于DEFAULT。</span></span><br><span class="line"><span class="comment">    * INTERFACES 使用基于接口的代理（jdk dynamic proxy)。</span></span><br><span class="line"><span class="comment">    * TARGET_CLASS 使用基于类的代理(cglib)。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">	ScopedProxyMode <span class="title function_">proxyMode</span><span class="params">()</span> <span class="keyword">default</span> ScopedProxyMode.DEFAULT;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Scope有两个主要属性value 和 proxyMode，其中proxyMode就是@RefreshScope实现的本质了。<br>proxyMode属性是一个ScopeProxyMode类型的枚举对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ScopedProxyMode</span> &#123;</span><br><span class="line">    DEFAULT,</span><br><span class="line">    NO,</span><br><span class="line">    INTERFACES,<span class="comment">// JDK 动态代理</span></span><br><span class="line">    TARGET_CLASS;<span class="comment">// CGLIB 动态代理</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">ScopedProxyMode</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当xyMode属性的值为ScopeProxyMode.TARGET_CLASS时，会给当前创建的bean生成一个代理对象，会通过代理对象来访问，每次访问都会创建一个新的对象。</p>
+<h3 id="2-RefreshScope注解"><a href="#2-RefreshScope注解" class="headerlink" title="2. @RefreshScope注解"></a>2. @RefreshScope注解</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123; ElementType.TYPE, ElementType.METHOD &#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Scope(&quot;refresh&quot;)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RefreshScope &#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> Scope#proxyMode()</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	ScopedProxyMode <span class="title function_">proxyMode</span><span class="params">()</span> <span class="keyword">default</span> ScopedProxyMode.TARGET_CLASS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它使用就是 @Scope，一个scopeName&#x3D;”refresh”的@Scope<br>proxyMode值为ScopedProxyMode.TARGET_CLASS，通过CGLIB动态代理的方式生成Bean。</p>
+<p>使用 @RefreshScope 注解的 bean，不仅会生成一个beanName的bean，默认情况下同时会生成 scopeTarget.beanName的 bean。</p>
+<h3 id="3-Scope接口"><a href="#3-Scope接口" class="headerlink" title="3.@Scope接口"></a>3.@Scope接口</h3><p><code>Object get(String name, ObjectFactory&lt;?&gt; objectFactory)</code><br>这个方法帮助我们来创建一个新的bean，也就是说，<br>@RefreshScope在调用刷新的时候会使用此方法来给我们创建新的对象，这样就可以通过spring的装配机制将属性重新注入了，也就实现了所谓的动态刷新</p>
+<p><code>RefreshScope extends GenericScope, GenericScope implements Scope</code></p>
+<p>GenericScope 实现了 Scope 最重要的 <code>get(String name,ObjectFactory&lt;?&gt; objectFactroy)</code>方法，在GenericScope里面包装了一个内部类 BeanLifeCycleWrapperCache 来对加了 @RefreshScope 从而创建的对象进行缓存，使其在不刷新时获取的都是同一个对象。(这里你可以把 BeanLifeCycleWrapperCache 想想成为一个大Map缓存了所有@RefreshScope标注的对象)</p>
+<p>知道了对象是缓存的，所以在进行动态刷新的时候，只需要清除缓存，重新创建就好了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ContextRefresher 外面使用它来进行方法调用 ============================== 我是分割线</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">synchronized</span> Set&lt;String&gt; <span class="title function_">refresh</span><span class="params">()</span> &#123;</span><br><span class="line">		Set&lt;String&gt; keys = refreshEnvironment();</span><br><span class="line">		<span class="built_in">this</span>.scope.refreshAll();</span><br><span class="line">		<span class="keyword">return</span> keys;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// RefreshScope 内部代码  ============================== 我是分割线</span></span><br><span class="line"></span><br><span class="line">	<span class="meta">@ManagedOperation(description = &quot;Dispose of the current instance of all beans in this scope and force a refresh on next method execution.&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">refreshAll</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>.destroy();</span><br><span class="line">		<span class="built_in">this</span>.context.publishEvent(<span class="keyword">new</span> <span class="title class_">RefreshScopeRefreshedEvent</span>());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// GenericScope 里的方法 ============================== 我是分割线</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//进行对象获取，如果没有就创建并放入缓存</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">get</span><span class="params">(String name, ObjectFactory&lt;?&gt; objectFactory)</span> &#123;</span><br><span class="line">		<span class="type">BeanLifecycleWrapper</span> <span class="variable">value</span> <span class="operator">=</span> <span class="built_in">this</span>.cache.put(name,</span><br><span class="line">				<span class="keyword">new</span> <span class="title class_">BeanLifecycleWrapper</span>(name, objectFactory));</span><br><span class="line">		locks.putIfAbsent(name, <span class="keyword">new</span> <span class="title class_">ReentrantReadWriteLock</span>());</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> value.getBean();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">catch</span> (RuntimeException e) &#123;</span><br><span class="line">			<span class="built_in">this</span>.errors.put(name, e);</span><br><span class="line">			<span class="keyword">throw</span> e;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 初始化Bean</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">getBean</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">this</span>.bean == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">var1</span> <span class="operator">=</span> <span class="built_in">this</span>.name;</span><br><span class="line">        <span class="keyword">synchronized</span>(<span class="built_in">this</span>.name) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="built_in">this</span>.bean == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.bean = <span class="built_in">this</span>.objectFactory.getObject();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.bean;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//进行缓存的数据清理</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">		List&lt;Throwable&gt; errors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Throwable&gt;();</span><br><span class="line">		Collection&lt;BeanLifecycleWrapper&gt; wrappers = <span class="built_in">this</span>.cache.clear();</span><br><span class="line">		<span class="keyword">for</span> (BeanLifecycleWrapper wrapper : wrappers) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="type">Lock</span> <span class="variable">lock</span> <span class="operator">=</span> locks.get(wrapper.getName()).writeLock();</span><br><span class="line">				lock.lock();</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					wrapper.destroy();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">finally</span> &#123;</span><br><span class="line">					lock.unlock();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (RuntimeException e) &#123;</span><br><span class="line">				errors.add(e);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!errors.isEmpty()) &#123;</span><br><span class="line">			<span class="keyword">throw</span> wrapIfNecessary(errors.get(<span class="number">0</span>));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">this</span>.errors.clear();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>通过观看源代码我们得知，我们截取了三个片段所得之，ContextRefresher 就是外层调用方法用的。</p>
+<p>GenericScope类中有一个成员变量BeanLifeCycleWrapperCache，用于缓存所有已经生成的Bean，在调用get方法时尝试从缓存加载，如果没有的话就生成一个新对象放入缓存，并通过初始化getBean其对应的Bean。<br>destory方法负责再刷新缓存的清理工作。清空缓存后，下次访问对象时就会重新创建新的对象并放入缓存了。</p>
+<p>所以在重新创建新的对象时，也就获取了最新的配置，也就达到了配置刷新的目的。</p>
+<h3 id="4-RefreshScope实现流程"><a href="#4-RefreshScope实现流程" class="headerlink" title="4.@RefreshScope实现流程"></a>4.@RefreshScope实现流程</h3><ol>
+<li>需要动态刷线的类标注@RefreshScope 注解。</li>
+<li>@RefreshScope 注解标注了@Scope 注解，并默认了ScopedProxyMode.TARGET_CLASS属性，此属性的功能就是再创建一个代理，在每次调用的时候都用它来调用GenericScope get方法来获取对象。</li>
+<li>如索性发生变更<ol>
+<li>调用 ContextRefresher refresh()–&gt;&gt;RefreshScope refreshAll() 进行缓存清理方法调用；</li>
+<li>发送刷新事件通知，GenericScope 真正的清理方法 destroy() 实现清理缓存。</li>
 </ol>
-<h3 id="2、YAML配置文件"><a href="#2、YAML配置文件" class="headerlink" title="2、YAML配置文件"></a>2、YAML配置文件</h3><pre><code>痛点：SpringBoot集中化管理配置，application.properties
-问题：配置多以后难阅读和修改，层级结构辨识度不高
-</code></pre>
-<p><strong>基本语法</strong></p>
-<ul>
-<li><strong>大小写敏感</strong></li>
-<li>使用<strong>缩进表示层级关系，k: v，使用空格分割k,v</strong></li>
-<li>缩进时不允许使用Tab键，只允许<strong>使用空格</strong>。换行</li>
-<li>缩进的空格数目不重要，只要<strong>相同层级</strong>的元素<strong>左侧对齐</strong>即可</li>
-<li><strong># 表示注释</strong>，从这个字符一直到行尾，都会被解析器忽略。<br>支持的写法：</li>
-<li><strong>对象</strong>：<strong>键值对</strong>的集合，如：映射（map）&#x2F; 哈希（hash） &#x2F; 字典（dictionary）</li>
-<li><strong>数组</strong>：一组按次序排列的值，如：序列（sequence） &#x2F; 列表（list）</li>
-<li><strong>纯量</strong>：单个的、不可再分的值，如：字符串、数字、bool、日期</li>
-</ul>
+</li>
+<li>在下一次使用对象的时候，会调用<code>GenericScope get(String name,ObjectFactory&lt;?&gt; objectFactory)</code>方法创建一个新的对象，并存入缓存中，此时新对象因为spring的装配机制就是新的属性了</li>
+</ol>
+<h3 id="5-RefreshScope原理总结"><a href="#5-RefreshScope原理总结" class="headerlink" title="5. @RefreshScope原理总结"></a>5. @RefreshScope原理总结</h3><ol>
+<li>SpringCloud程序存在一个自动装配的类，这个类默认情况下会自动初始化一个RefreshScope实例，该实例是GenericScope的子类，然后注册到容器中。（RefreshAutoConfiguration.java）</li>
+<li>当容器启动的时候，GenericScope会自己把自己注册到scope中（ConfigurableBeanFactory#registerScope）</li>
+<li>然后当自定义的Bean（被@Refresh修饰）注册的时候，会被容器读取到其作用域为refresh。（AnnotatedBeanDefinitionReader#doRegisterBean）<br> 通过上面三步，一个带有@RefreshScope的自定义Bean就被注册到容器中来，其作用域为refresh</li>
+<li>当我们后续进行依赖查找的时候，会绕过Singleton和Prototype分支，进入最后一个分支，通过调用Scope接口的get()获取到该refresh作用域的实例。</li>
+</ol>
 
       
     </div>
@@ -320,10 +284,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术(23下)</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微服务生态</a>
         		</li>
       		
 		</ul>
@@ -379,7 +339,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/09/19/2023/09/2023-08-16/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/09/24/2023/09/2023-09-24/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -393,18 +353,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/09/20/2023/09/2023-09-20/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/09/26/2023/09/2023-09-26/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          九月随笔
+          Dubbo了解了解
         
       </div>
     </a>
   
   
-    <a href="/2023/08/31/2023/08/2023-08-31/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">spring手敲复习/学习文档</div>
+    <a href="/2023/09/21/2023/09/2023-09-21/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开发中使用@Autowired注解哪种注入比较好</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -431,7 +391,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">核心特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.1.</span> <span class="toc-text">1、快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81SpringBoot%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、SpringBoot是什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BF%AB%E9%80%9F%E4%BD%93%E9%AA%8C"><span class="toc-number">1.2.</span> <span class="toc-text">2、快速体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、开发流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E7%89%B9%E6%80%A7%E7%BB%93%E5%90%88"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、特性结合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">3、应用分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、依赖管理机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%87%AA%E5%8A%A8%E9%85%8D%E7%BD%AE%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、自动配置机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%A0%B8%E5%BF%83%E6%8A%80%E8%83%BD"><span class="toc-number">1.4.</span> <span class="toc-text">4、核心技能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.4.1.</span> <span class="toc-text">1、常用注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81YAML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.2.</span> <span class="toc-text">2、YAML配置文件</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringCloud%E9%85%8D%E7%BD%AE%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0-RefreshScope%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">SpringCloud配置动态刷新@RefreshScope注解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-RefreshScope%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">一、@RefreshScope动态刷新原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Scope%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. @Scope注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-RefreshScope%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. @RefreshScope注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Scope%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.3.</span> <span class="toc-text">3.@Scope接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-RefreshScope%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.4.</span> <span class="toc-text">4.@RefreshScope实现流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-RefreshScope%E5%8E%9F%E7%90%86%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.5.</span> <span class="toc-text">5. @RefreshScope原理总结</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -555,15 +515,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术(23上)</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">概念</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,15 +539,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微服务核心</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术(23下)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
               <li class="article-tag-list-item">
