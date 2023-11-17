@@ -15,11 +15,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="pom微服务导致启动失败问题">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://z1.ax1x.com/2023/11/17/pitjTPI.jpg">
 <meta property="article:published_time" content="2023-11-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-17T01:14:51.038Z">
+<meta property="article:modified_time" content="2023-11-17T09:43:11.870Z">
 <meta property="article:author" content="touchingwang">
 <meta property="article:tag" content="技术(23下)">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/11/17/pitjTPI.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -186,9 +188,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>情况：<br>这两天在捯饬微服务springcloud，在跟着视频学习的时候，建moudle，改pom，写yml，测试，写业务这整个流程。<br>但是启动的时候报错，出现的问题是找不到数据库驱动，经过一番搜索发现是target中没有生成resource文件。</p>
-<span id="more"></span>
+        <div align="center">
+<img src="https://z1.ax1x.com/2023/11/17/pitjTPI.jpg" width="45%" margin="auto">
+</div>
+情况：
+这两天在捯饬微服务springcloud，在跟着视频学习的时候，建moudle，改pom，写yml，测试，写业务这整个流程。
+但是启动的时候报错，出现的问题是找不到数据库驱动，经过一番搜索发现是target中没有生成resource文件。
 
+<span id="more"></span>
 <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Description:</span><br><span class="line"></span><br><span class="line">Failed to configure a DataSource: <span class="string">&#x27;url&#x27;</span> attribute is not specified and no embedded datasource could be configured.</span><br><span class="line"></span><br><span class="line">Reason: Failed to determine a suitable driver class</span><br></pre></td></tr></table></figure>
 
 <h2 id="找原因"><a href="#找原因" class="headerlink" title="找原因"></a>找原因</h2><p>根据这个报错，我搜索一番发现其他的模块由 <code>maven</code> 生成的 <code>target</code>，都包含 <code>.yml</code> 文件，而这个无法启动的项目的 <code>target</code> 没有资源文件。</p>
@@ -437,6 +444,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">技术(22下)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -449,15 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">总结</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,10 +489,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">微服务生态</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">技术(22下)</a>
               </li>
             
             <div class="clearfix"></div>
