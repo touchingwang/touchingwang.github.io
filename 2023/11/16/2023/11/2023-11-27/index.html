@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>复盘丨Monthly Review-6月 | Hexo</title>
+  <title>Gateway配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="复盘">
+  <meta name="description" content="Gateway配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="复盘丨Monthly Review-6月">
-<meta property="og:url" content="http://example.com/2023/06/30/2023/06/2023-06-30/index.html">
+<meta property="og:title" content="Gateway配置">
+<meta property="og:url" content="http://example.com/2023/11/16/2023/11/2023-11-27/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="复盘">
+<meta property="og:description" content="Gateway配置">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-06-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-12T01:03:11.922Z">
+<meta property="og:image" content="https://z1.ax1x.com/2023/11/27/piBSYpF.jpg">
+<meta property="og:image" content="https://z1.ax1x.com/2023/11/27/pi0LsMt.png">
+<meta property="article:published_time" content="2023-11-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-27T03:18:25.025Z">
 <meta property="article:author" content="touchingwang">
-<meta property="article:tag" content="总结">
+<meta property="article:tag" content="微服务核心">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z1.ax1x.com/2023/11/27/piBSYpF.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -166,34 +169,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2023/06/2023-06-30" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2023/11/2023-11-27" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      复盘丨Monthly Review-6月
+      Gateway配置
     </h1>
   
 
         
-        <a href="/2023/06/30/2023/06/2023-06-30/" class="archive-article-date">
-  	<time datetime="2023-06-29T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-06-30</time>
+        <a href="/2023/11/16/2023/11/2023-11-27/" class="archive-article-date">
+  	<time datetime="2023-11-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>换了个新家，开始今年下半年的生活 ✏️；抛弃了 steam</p>
+        <div align="center">
+<img src="https://z1.ax1x.com/2023/11/27/piBSYpF.jpg" width="45%" margin="auto">
+</div>
 <span id="more"></span>
+## 一、Gateway网关入门
+## 1.Gateway介绍
+Spring Cloud Gateway是Spring Cloud的一个全新项目，基于Spring5，SpringBoot2和Project Reactor等技术开发的网关，它旨在为微服务框架提供一种简单有效的统一的API路由管理方式，以及基于Filter方式提供一些强大的过滤功能，例如：熔断、限流、重试等
 
-<p>6月的总结来的比较晚，6月份工作外的生活是游玩 steam 游戏，从大学开始 steam 这个软件基本上在我的笔记本上面没有下来过。</p>
-<p>6月末开始了搬家，原先三个人合租，现在人走的走散的散，再继续合租租金就比较贵了，还是一个人租房比较划算。</p>
-<p>搬到了一个新家，思前想后觉得生活没有了 steam 也照样活着。于是将笔记本完全恢复出厂设置，开机后，在选择浏览器方面，经过一番研究后选择了火狐浏览器。使用了它的同步功能，发现太牛了，以前使用谷歌浏览器和IE新浏览器没有注意，现在使用火狐浏览器我自身笔记本办公笔记版的浏览器标签，账号密码，历史都可以同步；解决了我在不同笔记本冲浪需要重复输入账号密码的问题。</p>
-<p>我之前也尝试过删除 steam，不过后来找到账号密码又继续玩了，因此我这次直接对账号进行一种不可逆的密码修改，同时接触邮箱绑定，完全丢失自己的账号。互联网时代不给我们权限限制也是有很大弊端的，如果我们控制不住自己的欲望，就容易陷入到里面。</p>
-<p>当前时间是 7月12号，在写博客总结方面个人对 <a target="_blank" rel="noopener" href="https://touchingwang.github.io/2023/06/27/2023/06/2023-06-27/%E2%80%98">思想笔记</a> 很是喜欢，以往写博客很多是写了之后就忘了，这篇文章对于笔记总结方面有一个很新的思路。</p>
+<p>Spring Cloud Gateway作为spring Cloud生态系统总的网关，目标是替代Zuul，在SpringCloud2.0以上版本中，没有对新版本Zuul2.0以上最新高性能版本进行集成，仍然还是Zuul1.x，非Raactor模式的老版本，而为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p>
+<p>SpringCloud Gateway功能：</p>
+<ol>
+<li>基于Spring Framework5,Project Reactor和Spring Boot2.0构建</li>
+<li>能够匹配任何请求属性上的路径</li>
+<li>断言和过滤器特定于路由。</li>
+<li>Hystrix断路器集成。</li>
+<li>SpringCloud DiscoveryClient集成</li>
+<li>易于编写的断言和过滤器</li>
+<li>请求速率限制</li>
+<li>路径改写</li>
+</ol>
+<h2 id="2-Gateway工作流程"><a href="#2-Gateway工作流程" class="headerlink" title="2.Gateway工作流程"></a>2.Gateway工作流程</h2><p>客户端向SpringCloud Gateway发出请求。然后在Gateway Handler Mapping中找到与请求相匹配的路由，将其发送到Gateway Web Handler。</p>
+<p>Handler再通过指定的过滤器来将请求发送到我们实际的服务执行业务逻辑，然后返回。<br>过滤器之间用虚线分开是因为过滤器可能会在发送代理请求之前(“pre”)或之后(“post”)执行业务逻辑</p>
+<p>Filter在 “pre” 类型的过滤器可以做参数校验、权限校验、流量监控、日志输出、协议转换等，在 “post” 类型的过滤器汇中可以做响应内容、响应头的修改，日持的输出，流量监控等有着非常重要的作用。</p>
+<h1 id="二、Gateway路由配置"><a href="#二、Gateway路由配置" class="headerlink" title="二、Gateway路由配置"></a>二、Gateway路由配置</h1><pre><code>Gateway的路由配置有两种方式，一种是通过YML配置文件来配置，一种是通过配置类来配置
+</code></pre>
+<h2 id="YML配置文件配置路由"><a href="#YML配置文件配置路由" class="headerlink" title="YML配置文件配置路由"></a>YML配置文件配置路由</h2><h3 id="1-指定路径转发路由"><a href="#1-指定路径转发路由" class="headerlink" title="1.指定路径转发路由"></a>1.指定路径转发路由</h3><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-gateway-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">          <span class="comment"># 路由的ID，没有固定规则，但要求唯一，建议配合服务名</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh</span></span><br><span class="line">          <span class="comment"># 匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">          <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/get/**</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-通过服务名实现动态路由"><a href="#2-通过服务名实现动态路由" class="headerlink" title="2.通过服务名实现动态路由"></a>2.通过服务名实现动态路由</h3><p>默认情况下Gateway会根据注册中心注册的服务列表，以注册中心上微服务名为路径创建动态路由进行转发，从而实现动态路由的功能</p>
+<ol>
+<li>在钱买你的基础上，新增一个支付模块，与已有支付模块相同</li>
+<li>修改Gateway网关项目(spring-cloud-gateway-gateway9527)配置文件application.yml，修改内容如下：<br><img src="https://z1.ax1x.com/2023/11/27/pi0LsMt.png" alt="pi0LsMt.png"></li>
+</ol>
+<h1 id="三、Predicate介绍"><a href="#三、Predicate介绍" class="headerlink" title="三、Predicate介绍"></a>三、Predicate介绍</h1><p>SpringCloud Gateway将路由作为Spring WebFlux <code>handlerMapping</code> 基础架构的一部分进行匹配。Sping Cloud Gateway包括许多内置的路由断言工厂。所有这些断言都与HTTP请求的不同属性匹配。您可以将多个路由断言工厂与逻辑 <code>and</code> 语句结合使用。</p>
+<pre><code>常用的 Predicate
+</code></pre>
+<h2 id="1、After-Route-Predicate"><a href="#1、After-Route-Predicate" class="headerlink" title="1、After Route Predicate"></a>1、After Route Predicate</h2><p>所述 <code>After断言</code> 有一个参数，一个 <code>datetime</code>(其是Java ZoneDateTime)。该断言匹配在指定日期时间之后发生的请求。下面的示例配置路由后断言：</p>
+<p>例子1. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1 spring:</span></span><br><span class="line"><span class="attr">2   cloud:</span></span><br><span class="line"><span class="attr">3     gateway:</span></span><br><span class="line"><span class="attr">4       routes:</span></span><br><span class="line"><span class="attr">5         - id:</span> <span class="string">after_route</span></span><br><span class="line"><span class="attr">6           uri: http://localhost:80017           predicates:</span></span><br><span class="line"><span class="number">8</span>             <span class="bullet">-</span> <span class="string">After=2020-04-20T23:57:57.308+08:00[Asia/Shanghai]</span></span><br></pre></td></tr></table></figure>
+<p>这路由符合2020年4月20日23:57时区时间(上海)之后的任何请求。<br><code> 测试请求命令：</code>curl <a target="_blank" rel="noopener" href="http://localhost:9527/payment/get/1%60">http://localhost:9527/payment/get/1`</a></p>
+<h2 id="2、Before-Route-Predicate"><a href="#2、Before-Route-Predicate" class="headerlink" title="2、Before Route Predicate"></a>2、Before Route Predicate</h2><p>所述<code>Before断言</code>有一个参数，一个<code>datetime</code>（其是Java <code>ZonedDateTime</code>）。该断言匹配在指定之前发生的请求<code>datetime</code>。以下示例配置了路由前断言：</p>
+<p>例子2. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">1 spring:</span></span><br><span class="line"><span class="attr">2   cloud:</span></span><br><span class="line"><span class="attr">3     gateway:</span></span><br><span class="line"><span class="attr">4       routes:</span></span><br><span class="line"><span class="attr">5         - id:</span> <span class="string">before_route</span></span><br><span class="line"><span class="attr">6           uri: http://localhost:80017           predicates:</span></span><br><span class="line"><span class="number">8</span>             <span class="bullet">-</span> <span class="string">Before=2020-04-21T23:57:57.308+08:00[Asia/Shanghai]</span></span><br></pre></td></tr></table></figure>
+<p>这路由符合2020年4月21日23:57时区时间（上海）之前的任何请求。</p>
+<h2 id="3、Between-Route-Predicate"><a href="#3、Between-Route-Predicate" class="headerlink" title="3、Between Route Predicate"></a>3、Between Route Predicate</h2><p>该<code>Between断言</code>有两个参数，<code>datetime1</code>并且<code>datetime2</code> 这是Java <code>ZonedDateTime</code>对象。该断言匹配在之后<code>datetime1</code>和之前发生的请求<code>datetime2</code>。该<code>datetime2</code>参数必须是后<code>datetime1</code>。以下示例配置了路由之间的断言：</p>
+<p>例子3. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">between_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Between=2020-04-20T23:57:57.308+08:00[Asia/Shanghai],</span> <span class="number">2020-04-21T23:57:57.308+08:00</span>[<span class="string">Asia/Shanghai</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="4、Cookie-Route-Predicate"><a href="#4、Cookie-Route-Predicate" class="headerlink" title="4、Cookie Route Predicate"></a>4、Cookie Route Predicate</h2><p>所述 <code>Cookie断言</code> 采用两个参数，该cookie <code>name</code> 和 <code>regexp</code> (其是Java正则表达式)。该断言匹配具有给定名称且其值与正则表达式匹配的cookie。以下示例配置Cookie路由断言：</p>
+<p>例子4. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">cloud:</span></span><br><span class="line">		<span class="attr">gateway:</span></span><br><span class="line">			<span class="attr">routes:</span></span><br><span class="line">				<span class="bullet">-</span> <span class="attr">id:</span> <span class="string">cookie_route</span></span><br><span class="line">				  <span class="attr">url:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">				  <span class="attr">predicates:</span></span><br><span class="line">					  <span class="bullet">-</span> <span class="string">Cookie=username,</span> <span class="string">xiaoming</span></span><br></pre></td></tr></table></figure>
+<p>此路径匹配具有名称为username与xiaoming正则表达式匹配的cookie的请求。</p>
+<p>测试请求命令：<code>curl http://localhost:9527/payment/get/1 --cookie &quot;username=xiaoming&quot;</code></p>
+<h2 id="5、Header-Route-Predicate"><a href="#5、Header-Route-Predicate" class="headerlink" title="5、Header Route Predicate"></a>5、Header Route Predicate</h2><p>所述 <code>Header断言</code> 采用两个参数，报头 <code>name</code> 和一个 <code>regexp</code>(其是java正则表达式)。该断言与具有给定名称且其值与正则表达式匹配的标头匹配。以下示例配置标头路由断言：</p>
+<p>例子5. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">cloud:</span></span><br><span class="line">		<span class="attr">gateway:</span></span><br><span class="line">			<span class="attr">routes:</span></span><br><span class="line">				<span class="bullet">-</span> <span class="attr">id:</span> <span class="string">header_route</span></span><br><span class="line">				  <span class="attr">url:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">				  <span class="attr">predicates:</span></span><br><span class="line">					  <span class="bullet">-</span> <span class="string">Header=X-Request-Id,</span> <span class="string">\d+</span></span><br></pre></td></tr></table></figure>
+<p>如果请求具有名为 <code>X-Request-Id</code> 其值与 <code>\d+</code> 正则表达式匹配的标头(即，其值为一个或多个数字)，则此路由匹配。</p>
+<p>测试请求命令：<code>curl htp://localhost:9527/payment/get/1 -H &quot;X-Request-Id:123&quot;</code></p>
+<h2 id="6、Host-Route-Predicate"><a href="#6、Host-Route-Predicate" class="headerlink" title="6、Host Route Predicate"></a>6、Host Route Predicate</h2><p>该 <code>Host断言</code> 需要一个参数：主机名的列表 <code>patterns</code>。该模式是带有 <code>.</code> 分隔符的Ant样式的模式。断言与 <code>Host</code> 匹配模式的标头匹配。以下示例配置主机路由断言：</p>
+<p>例子6. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">cloud:</span></span><br><span class="line">		<span class="attr">gateway:</span></span><br><span class="line">			<span class="attr">routes:</span></span><br><span class="line">				<span class="bullet">-</span> <span class="attr">id:</span> <span class="string">host_route</span></span><br><span class="line">				  <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">				  <span class="attr">predicates:</span></span><br><span class="line">					  <span class="bullet">-</span> <span class="string">Host</span> <span class="string">=</span> <span class="string">**.x.com</span></span><br></pre></td></tr></table></figure>
+<p>如果请求具有这种路由匹配 <code>Host</code> 用的头值**.x.com</p>
+<p>测试请求命令：<code>curl http://localhost:9527/payment/get/1 -H &quot;host:demo1.x.com&quot;</code></p>
+<h2 id="7、Method-Route-Predicate"><a href="#7、Method-Route-Predicate" class="headerlink" title="7、Method Route Predicate"></a>7、Method Route Predicate</h2><p>所述 <code>Method断言</code> 需要 <code>methods</code> 的参数，它是一个或多个参数：HTTP方法来匹配。以下示例配置方法路由断言：</p>
+<p>例子7. applition.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">cloud:</span></span><br><span class="line">		<span class="attr">gateway:</span></span><br><span class="line">			<span class="bullet">-</span> <span class="attr">id:</span> <span class="string">method_route</span></span><br><span class="line">			  <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">			  <span class="attr">predicates:</span></span><br><span class="line">				  <span class="bullet">-</span> <span class="string">Method=GET</span></span><br></pre></td></tr></table></figure>
+<p>测试请求命令：<code>curl http://localhost:9527/payment/get/1 -X GET</code></p>
+<h2 id="8、Path-Route-Predicate"><a href="#8、Path-Route-Predicate" class="headerlink" title="8、Path Route Predicate"></a>8、Path Route Predicate</h2><p>该 <code>Path断言</code> 有两个参数：spring的列表 <code>PathMatcher</code> <code>patterns</code> 和一个可选的标志叫 <code>matchOptionalTrailingSeparator</code>。以下示例配置路径路由断言：</p>
+<p>例子8. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">cloud:</span></span><br><span class="line">		<span class="attr">gateway:</span></span><br><span class="line">			<span class="attr">routes:</span></span><br><span class="line">				<span class="bullet">-</span> <span class="attr">id:</span> <span class="string">path_route</span></span><br><span class="line">				  <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">				  <span class="attr">predicates:</span></span><br><span class="line">					  <span class="bullet">-</span> <span class="string">Path=/payment/get/**</span></span><br></pre></td></tr></table></figure>
+<p>测试请求命令：<code>curl http://localhost:9527/payment/get/1</code></p>
+<h2 id="9、Query-Route-Predicate"><a href="#9、Query-Route-Predicate" class="headerlink" title="9、Query Route Predicate"></a>9、Query Route Predicate</h2><p>所述<code>Query断言</code>采用两个参数：所要求的<code>param</code>和可选的<code>regexp</code>（其是Java正则表达式）。以下示例配置查询路由断言：</p>
+<p>例子9. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">query_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Query=green</span></span><br></pre></td></tr></table></figure>
+<p>如果请求包含<code>green</code>查询参数，则前面的路由匹配。</p>
+<p>测试请求命令：<code>curl http://localhost:9527/payment/get/1?green=1</code></p>
+<h2 id="10、RemoteAddr-Route-Predicate"><a href="#10、RemoteAddr-Route-Predicate" class="headerlink" title="10、RemoteAddr Route Predicate"></a>10、RemoteAddr Route Predicate</h2><p>所述<code>RemoteAddr</code>断言需要的列表<code>sources</code>，其是CIDR的表示法（IPv4或IPv6）的字符串，如<code>192.168.0.1/16</code>（其中<code>192.168.0.1</code>是一个IP地址和<code>16</code>一个子网掩码）。以下示例配置一个RemoteAddr路由谓词：</p>
+<p>例子10. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">query_route</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">RemoteAddr=192.168.1.1/24</span></span><br></pre></td></tr></table></figure>
+<p>请求测试命令：<code>curl http://192.168.1.4:9527/payment/get/1</code></p>
+<h2 id="11、Weight-Route-Predicate"><a href="#11、Weight-Route-Predicate" class="headerlink" title="11、Weight Route Predicate"></a>11、Weight Route Predicate</h2><p>该<code>Weight断言</code>有两个参数：<code>group</code>和<code>weight</code>（一个int）。权重是按组计算的。以下示例配置权重路由断言：</p>
+<p>例子11. application.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">gateway:</span></span><br><span class="line">    <span class="attr">discovery:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">weight_high</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8001</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Weight=group1,</span> <span class="number">8</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">weight_low</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">http://localhost:8002</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Weight=group1,</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>这条路线会将大约80％的流量转发到<a href="http://localhost:8001，将大约20％的流量转发到http://localhost:8001">http://localhost:8001，将大约20％的流量转发到http://localhost:8001</a></p>
+<p>请求测试命令：<code>curl http://localhost:9527/payment/get/1</code></p>
 
       
     </div>
@@ -205,7 +282,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微服务核心</a>
         		</li>
       		
 		</ul>
@@ -261,7 +338,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/06/30/2023/06/2023-06-30/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2023/11/16/2023/11/2023-11-27/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -275,18 +352,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/07/08/2023/07/2023-07-08/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/11/16/2023/11/2023-11-16/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          种一棵树的最好时机是十年前，其次是现在
+          生活上太闲了怎么办?
         
       </div>
     </a>
   
   
-    <a href="/2023/06/27/2023/06/2023-06-27/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">把信息交给未来的自己——构建你的第二大脑</div>
+    <a href="/2023/11/15/2023/11/2023-11-15/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">&lt;packaging&gt;pom&lt;/packaging&gt;微服务导致启动失败问题</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -313,7 +390,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Gateway%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">2.Gateway工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Gateway%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">二、Gateway路由配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#YML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1"><span class="toc-number">1.</span> <span class="toc-text">YML配置文件配置路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1"><span class="toc-number">1.1.</span> <span class="toc-text">1.指定路径转发路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E6%9C%8D%E5%8A%A1%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">1.2.</span> <span class="toc-text">2.通过服务名实现动态路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Predicate%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">三、Predicate介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81After-Route-Predicate"><span class="toc-number">1.</span> <span class="toc-text">1、After Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Before-Route-Predicate"><span class="toc-number">2.</span> <span class="toc-text">2、Before Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81Between-Route-Predicate"><span class="toc-number">3.</span> <span class="toc-text">3、Between Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81Cookie-Route-Predicate"><span class="toc-number">4.</span> <span class="toc-text">4、Cookie Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Header-Route-Predicate"><span class="toc-number">5.</span> <span class="toc-text">5、Header Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81Host-Route-Predicate"><span class="toc-number">6.</span> <span class="toc-text">6、Host Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81Method-Route-Predicate"><span class="toc-number">7.</span> <span class="toc-text">7、Method Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81Path-Route-Predicate"><span class="toc-number">8.</span> <span class="toc-text">8、Path Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81Query-Route-Predicate"><span class="toc-number">9.</span> <span class="toc-text">9、Query Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81RemoteAddr-Route-Predicate"><span class="toc-number">10.</span> <span class="toc-text">10、RemoteAddr Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81Weight-Route-Predicate"><span class="toc-number">11.</span> <span class="toc-text">11、Weight Route Predicate</span></a></li></ol>
                     </div>
                 </span>
             </div>
