@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://z1.ax1x.com/2023/11/27/piBSYpF.jpg">
 <meta property="og:image" content="https://z1.ax1x.com/2023/11/27/pi0LsMt.png">
 <meta property="article:published_time" content="2023-11-26T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-27T05:58:12.167Z">
+<meta property="article:modified_time" content="2023-11-28T01:06:47.647Z">
 <meta property="article:author" content="touchingwang">
 <meta property="article:tag" content="微服务核心">
 <meta name="twitter:card" content="summary">
@@ -70,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 64
+			总文章数 65
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -193,10 +193,8 @@
 <img src="https://z1.ax1x.com/2023/11/27/piBSYpF.jpg" width="45%" margin="auto">
 </div>
 <span id="more"></span>
-## 一、Gateway网关入门
-## 1.Gateway介绍
-Spring Cloud Gateway是Spring Cloud的一个全新项目，基于Spring5，SpringBoot2和Project Reactor等技术开发的网关，它旨在为微服务框架提供一种简单有效的统一的API路由管理方式，以及基于Filter方式提供一些强大的过滤功能，例如：熔断、限流、重试等
 
+<h1 id="一、Gateway网关入门"><a href="#一、Gateway网关入门" class="headerlink" title="一、Gateway网关入门"></a>一、Gateway网关入门</h1><h2 id="1-Gateway介绍"><a href="#1-Gateway介绍" class="headerlink" title="1.Gateway介绍"></a>1.Gateway介绍</h2><p>Spring Cloud Gateway是Spring Cloud的一个全新项目，基于Spring5，SpringBoot2和Project Reactor等技术开发的网关，它旨在为微服务框架提供一种简单有效的统一的API路由管理方式，以及基于Filter方式提供一些强大的过滤功能，例如：熔断、限流、重试等</p>
 <p>Spring Cloud Gateway作为spring Cloud生态系统总的网关，目标是替代Zuul，在SpringCloud2.0以上版本中，没有对新版本Zuul2.0以上最新高性能版本进行集成，仍然还是Zuul1.x，非Raactor模式的老版本，而为了提升网关的性能，SpringCloud Gateway是基于WebFlux框架实现的，而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty。</p>
 <p>SpringCloud Gateway功能：</p>
 <ol>
@@ -352,11 +350,11 @@ Spring Cloud Gateway是Spring Cloud的一个全新项目，基于Spring5，Sprin
   
 <nav id="article-nav">
   
-    <a href="/2024/12/07/2034/2034-12-07-%E7%BD%AE%E9%A1%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/12/05/2023/12/2023-12-05/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          置顶|
+          java获取map数组指定key创建新的map数组
         
       </div>
     </a>
@@ -390,7 +388,7 @@ Spring Cloud Gateway是Spring Cloud的一个全新项目，基于Spring5，Sprin
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Gateway%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">2.Gateway工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Gateway%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE"><span class="toc-number"></span> <span class="toc-text">二、Gateway路由配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#YML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1"><span class="toc-number">1.</span> <span class="toc-text">YML配置文件配置路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1"><span class="toc-number">1.1.</span> <span class="toc-text">1.指定路径转发路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E6%9C%8D%E5%8A%A1%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">1.2.</span> <span class="toc-text">2.通过服务名实现动态路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Predicate%E4%BB%8B%E7%BB%8D"><span class="toc-number"></span> <span class="toc-text">三、Predicate介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81After-Route-Predicate"><span class="toc-number">1.</span> <span class="toc-text">1、After Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Before-Route-Predicate"><span class="toc-number">2.</span> <span class="toc-text">2、Before Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81Between-Route-Predicate"><span class="toc-number">3.</span> <span class="toc-text">3、Between Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81Cookie-Route-Predicate"><span class="toc-number">4.</span> <span class="toc-text">4、Cookie Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Header-Route-Predicate"><span class="toc-number">5.</span> <span class="toc-text">5、Header Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81Host-Route-Predicate"><span class="toc-number">6.</span> <span class="toc-text">6、Host Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81Method-Route-Predicate"><span class="toc-number">7.</span> <span class="toc-text">7、Method Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81Path-Route-Predicate"><span class="toc-number">8.</span> <span class="toc-text">8、Path Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81Query-Route-Predicate"><span class="toc-number">9.</span> <span class="toc-text">9、Query Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81RemoteAddr-Route-Predicate"><span class="toc-number">10.</span> <span class="toc-text">10、RemoteAddr Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81Weight-Route-Predicate"><span class="toc-number">11.</span> <span class="toc-text">11、Weight Route Predicate</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81Gateway%E7%BD%91%E5%85%B3%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">一、Gateway网关入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Gateway%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1.Gateway介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Gateway%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">2.Gateway工作流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Gateway%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">二、Gateway路由配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#YML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE%E8%B7%AF%E7%94%B1"><span class="toc-number">2.1.</span> <span class="toc-text">YML配置文件配置路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84%E8%BD%AC%E5%8F%91%E8%B7%AF%E7%94%B1"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.指定路径转发路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87%E6%9C%8D%E5%8A%A1%E5%90%8D%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.通过服务名实现动态路由</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Predicate%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">三、Predicate介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81After-Route-Predicate"><span class="toc-number">3.1.</span> <span class="toc-text">1、After Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Before-Route-Predicate"><span class="toc-number">3.2.</span> <span class="toc-text">2、Before Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81Between-Route-Predicate"><span class="toc-number">3.3.</span> <span class="toc-text">3、Between Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81Cookie-Route-Predicate"><span class="toc-number">3.4.</span> <span class="toc-text">4、Cookie Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Header-Route-Predicate"><span class="toc-number">3.5.</span> <span class="toc-text">5、Header Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81Host-Route-Predicate"><span class="toc-number">3.6.</span> <span class="toc-text">6、Host Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81Method-Route-Predicate"><span class="toc-number">3.7.</span> <span class="toc-text">7、Method Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81Path-Route-Predicate"><span class="toc-number">3.8.</span> <span class="toc-text">8、Path Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81Query-Route-Predicate"><span class="toc-number">3.9.</span> <span class="toc-text">9、Query Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81RemoteAddr-Route-Predicate"><span class="toc-number">3.10.</span> <span class="toc-text">10、RemoteAddr Route Predicate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11%E3%80%81Weight-Route-Predicate"><span class="toc-number">3.11.</span> <span class="toc-text">11、Weight Route Predicate</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -419,7 +417,7 @@ Spring Cloud Gateway是Spring Cloud的一个全新项目，基于Spring5，Sprin
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2023 touchingwang
+    		&copy; 2024 touchingwang
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
